@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://ch1v6iuqbho2c"]
+
+[ext_resource type="Script" path="res://node_2d.gd" id="1_gcb2d"]
+[ext_resource type="Texture2D" uid="uid://ch3lvstdcaeww" path="res://Textures/Start menu.png" id="2_x3wc7"]
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_gcb2d")
+
+[node name="Panel" type="Panel" parent="."]
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+texture = ExtResource("2_x3wc7")
+expand_mode = 1
+
+[node name="Button" type="Button" parent="Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.462
+anchor_top = 0.863
+anchor_right = 0.462
+anchor_bottom = 0.863
+offset_left = -126.224
+offset_top = -35.224
+offset_right = 126.776
+offset_bottom = 34.776
+text = "Start"
+
+[connection signal="pressed" from="Panel/Button" to="." method="Start_button"]
