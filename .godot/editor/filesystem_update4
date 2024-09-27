@@ -1,0 +1,11 @@
+res://res/test.tres
+res://scenes/UI/cut_scene.tscn
+res://scenes/UI/cut_scene.gd
+res://scenes/UI/Start menu.tscn
+res://scenes/test.tscn
+res://scenes/UI/credits.tscn
+res://scenes/character_body_2d.tscn
+res://res/world_environment.tscn
+res://scenes/character_body_2d.gd
+res://scenes/UI/dialoge.tscn
+res://scenes/UI/dialoge.gd

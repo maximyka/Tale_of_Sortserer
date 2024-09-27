@@ -7,6 +7,8 @@ extends CharacterBody2D
 var target = position
 var target_node
 
+@onready var player_anim: AnimatedSprite2D = $Player
+
 var combo = '':
 	set(value):
 		combo = value
@@ -27,9 +29,14 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed('RClick'):
-		target = get_global_mouse_position()
-		target_node.position = get_global_mouse_position()
+		var pos = get_global_mouse_position()
+		target = pos
+		target_node.position = pos
 		target_node.visible = true
+		if position.x - pos.x <= 0:
+			$Player.flip_h = false
+		else:
+			$Player.flip_h = true
 	if event.is_action_pressed('q'):
 		combo += 'q'
 	elif event.is_action_pressed('w'):
@@ -43,6 +50,8 @@ func _unhandled_input(event: InputEvent) -> void:
 func _physics_process(delta: float) -> void:
 	velocity = position.direction_to(target) * speed
 	if position.distance_to(target) > 10:
+		player_anim.play('Run')
 		move_and_slide()
 	else:
+		player_anim.play('Idle')
 		target_node.visible = false

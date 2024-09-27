@@ -1,0 +1,14 @@
+Label
+Control
+Panel
+AnimatedSprite2D
+Sprite2D
+Marker2D
+PhantomCameraHost
+Camera2D
+PhantomCamera2D
+WorldEnvironment
+TileMapLayer
+TileMap
+AnimationPlayer
+TextureButton
