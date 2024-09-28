@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://cumdq3cu4oihm"]
+
+[ext_resource type="PackedScene" uid="uid://bltitciucq725" path="res://scenes/nps/nps.tscn" id="1_hdr0y"]
+[ext_resource type="Texture2D" uid="uid://dw6ry6a8php5u" path="res://Textures/NPC/BigBigMan.png" id="2_6mikv"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l081f"]
+radius = 9.0159
+height = 105.95
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lx8h7"]
+radius = 31.2391
+height = 133.655
+
+[node name="BigMen" instance=ExtResource("1_hdr0y")]
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(6, -8)
+rotation = -1.55356
+shape = SubResource("CapsuleShape2D_l081f")
+
+[node name="Sprite2D" parent="." index="2"]
+position = Vector2(6, -26)
+texture = ExtResource("2_6mikv")
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(5, -13)
+rotation = -1.53629
+scale = Vector2(1.34698, 1.34698)
+shape = SubResource("CapsuleShape2D_lx8h7")
+
+[node name="Label" parent="." index="4"]
+offset_left = -22.0
+offset_top = -89.0
+offset_right = 19.0
+offset_bottom = -69.0

@@ -11,6 +11,8 @@ var combo = '':
 	set(value):
 		combo = value
 		if len(combo) == 4:
+			$UI/AnimatedSprite2D.visible = true
+			$UI/AnimatedSprite2D.play('react')
 			if combo == 'wwww':
 				print('Теперь ты всегда выигрываешь в нарды у армян')
 			elif combo == 'erer':
@@ -20,6 +22,7 @@ var combo = '':
 			combo = ''
 
 func _ready() -> void:
+	$UI/AnimatedSprite2D.visible = false
 	target_node = $"../../target"
 	var tween = get_tree().create_tween()
 	tween.tween_property(GlobalWorldEnvironment, 'environment:adjustment_brightness', 1, 1)
@@ -56,3 +59,7 @@ func _physics_process(delta: float) -> void:
 		speeding = 0
 		player_anim.play('Idle')
 		target_node.visible = false
+
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	$UI/AnimatedSprite2D.visible = false

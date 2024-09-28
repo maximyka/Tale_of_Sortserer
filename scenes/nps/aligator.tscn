@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dql4fpcl2tnw7"]
+
+[ext_resource type="PackedScene" uid="uid://bltitciucq725" path="res://scenes/nps/nps.tscn" id="1_emfqa"]
+[ext_resource type="Texture2D" uid="uid://r1xdcrweww13" path="res://Textures/NPC/Aligator.png" id="2_clb3e"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_he1mw"]
+
+[node name="Aligator" instance=ExtResource("1_emfqa")]
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(2, 0)
+shape = SubResource("CircleShape2D_he1mw")
+
+[node name="Sprite2D" parent="." index="2"]
+position = Vector2(0, -22)
+texture = ExtResource("2_clb3e")
+
+[node name="Label" parent="." index="4"]
+offset_top = -82.0
+offset_right = 21.0
+offset_bottom = -62.0

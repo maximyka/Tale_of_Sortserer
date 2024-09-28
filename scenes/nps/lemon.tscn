@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://cexxcshgo8f5u"]
+
+[ext_resource type="PackedScene" uid="uid://bltitciucq725" path="res://scenes/nps/nps.tscn" id="1_s6pl0"]
+[ext_resource type="Texture2D" uid="uid://bs484l0upif0s" path="res://Textures/NPC/Lemon_with_Marakas.png" id="2_pa7xd"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_86s8x"]
+height = 26.0
+
+[node name="Lemon" instance=ExtResource("1_s6pl0")]
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, 2)
+shape = SubResource("CapsuleShape2D_86s8x")
+
+[node name="Sprite2D" parent="." index="2"]
+position = Vector2(1, -18)
+texture = ExtResource("2_pa7xd")
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(0, -12)
+
+[node name="Label" parent="." index="4"]
+offset_left = -18.0
+offset_top = -71.0
+offset_right = 23.0
+offset_bottom = -51.0

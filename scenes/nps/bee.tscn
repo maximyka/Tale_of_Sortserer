@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://hr74ktygtul0"]
+
+[ext_resource type="PackedScene" uid="uid://bltitciucq725" path="res://scenes/nps/nps.tscn" id="1_1t662"]
+[ext_resource type="Texture2D" uid="uid://bceyebegfrtnk" path="res://Textures/NPC/Bee.png" id="2_4mh4x"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_iexrj"]
+height = 26.0
+
+[node name="Bee" instance=ExtResource("1_1t662")]
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, -2)
+shape = SubResource("CapsuleShape2D_iexrj")
+
+[node name="Sprite2D" parent="." index="2"]
+position = Vector2(5, -22)
+texture = ExtResource("2_4mh4x")
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(0, -14)
+
+[node name="Label" parent="." index="4"]
+offset_left = -19.0
+offset_top = -89.0
+offset_right = 22.0
+offset_bottom = -69.0

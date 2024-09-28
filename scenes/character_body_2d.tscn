@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://0brdn6o5jaxv"]
+[gd_scene load_steps=44 format=3 uid="uid://0brdn6o5jaxv"]
 
 [ext_resource type="Script" path="res://scenes/character_body_2d.gd" id="1_4kowe"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_aa23l"]
@@ -8,14 +8,24 @@
 [ext_resource type="Texture2D" uid="uid://dr1j8hdecbx5y" path="res://Textures/UI/R.png" id="5_rte8w"]
 [ext_resource type="Texture2D" uid="uid://b067ds4nmpfgp" path="res://Textures/UI/W.png" id="6_gig38"]
 [ext_resource type="Texture2D" uid="uid://brwmn680vpxef" path="res://Player/Player_Idle12.png" id="8_b7jpc"]
+[ext_resource type="Texture2D" uid="uid://khp02ishrqty" path="res://Textures/Hmmm/Hmmmm1.png" id="8_mqofo"]
+[ext_resource type="Texture2D" uid="uid://bh254opqux6v2" path="res://Textures/Hmmm/Hmmmm2.png" id="9_5ci2s"]
 [ext_resource type="Texture2D" uid="uid://bhqqxl0sywr8u" path="res://Player/Player_Idle13.png" id="9_jj8ls"]
+[ext_resource type="Texture2D" uid="uid://jvuc8loy8ykq" path="res://Textures/Hmmm/Hmmmm3.png" id="10_7bl2m"]
 [ext_resource type="Texture2D" uid="uid://bxtbonf2bgxat" path="res://Player/Player_Idle14.png" id="10_lo88y"]
+[ext_resource type="Texture2D" uid="uid://dcylm45a3qvi6" path="res://Textures/Hmmm/Hmmmm4.png" id="11_f7r5d"]
 [ext_resource type="Texture2D" uid="uid://bqp3udnj7e5g7" path="res://Player/Player_Idle15.png" id="11_g6tlt"]
+[ext_resource type="Texture2D" uid="uid://ctgvqdnxkvnvj" path="res://Textures/Hmmm/Hmmmm5.png" id="12_hwa1f"]
 [ext_resource type="Texture2D" uid="uid://5yq6b0jpb5kh" path="res://Player/Player_Idle16.png" id="12_yitmh"]
+[ext_resource type="Texture2D" uid="uid://bd1jlebx8lpiv" path="res://Textures/Hmmm/Hmmmm6.png" id="13_dfsf4"]
 [ext_resource type="Texture2D" uid="uid://cnytjt840gkoj" path="res://Player/Player_Idle17.png" id="13_w8h7a"]
 [ext_resource type="Texture2D" uid="uid://cj78ma1q3eegq" path="res://Player/Player_Idle18.png" id="14_62eu0"]
+[ext_resource type="Texture2D" uid="uid://cvq8n3sfs0jim" path="res://Textures/Hmmm/Hmmmm7.png" id="14_o7ycl"]
 [ext_resource type="Texture2D" uid="uid://dc0onrcodk6jl" path="res://Player/Player_Idle19.png" id="15_sd7lx"]
+[ext_resource type="Texture2D" uid="uid://c6x7c8tttmbm2" path="res://Textures/Hmmm/Hmmmm8.png" id="15_vptet"]
+[ext_resource type="Texture2D" uid="uid://dhhe25f2csuwi" path="res://Textures/Hmmm/Hmmmm9.png" id="16_6omv1"]
 [ext_resource type="Texture2D" uid="uid://xd6tvanpm5np" path="res://Player/Player_Idle20.png" id="16_8hcy7"]
+[ext_resource type="Texture2D" uid="uid://bchnrgy105x7x" path="res://Textures/Hmmm/Hmmmm10.png" id="17_0hsy4"]
 [ext_resource type="Texture2D" uid="uid://6opb0y20s5wm" path="res://Player/Player_Idle21.png" id="17_lmpa8"]
 [ext_resource type="Texture2D" uid="uid://dy5nfgmhh757t" path="res://Player/Player_Idle22.png" id="18_7dvpa"]
 [ext_resource type="Texture2D" uid="uid://dko3kpk8110om" path="res://Textures/Player_Move/Player_Movement1.png" id="19_88gk8"]
@@ -35,6 +45,44 @@ script = ExtResource("3_lti10")
 duration = 1.0
 transition = 0
 ease = 2
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4bgan"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_mqofo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_5ci2s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_7bl2m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_f7r5d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_hwa1f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_dfsf4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_o7ycl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_vptet")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_6omv1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_0hsy4")
+}],
+"loop": false,
+"name": &"react",
+"speed": 8.0
+}]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xl0kc"]
 animations = [{
@@ -114,6 +162,7 @@ height = 20.0
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(1, 1.00392)
+collision_layer = 3
 script = ExtResource("1_4kowe")
 speed = 150
 
@@ -123,6 +172,11 @@ follow_mode = 2
 follow_target = NodePath("..")
 zoom = Vector2(1.72, 1.72)
 tween_resource = SubResource("Resource_jcypl")
+draw_limits = true
+limit_left = -1350
+limit_top = -650
+limit_right = 1350
+limit_bottom = 650
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -156,6 +210,11 @@ texture = ExtResource("3_r0gam")
 layout_mode = 2
 texture = ExtResource("5_rte8w")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI"]
+sprite_frames = SubResource("SpriteFrames_4bgan")
+animation = &"react"
+centered = false
+
 [node name="Player" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_xl0kc")
 animation = &"Idle"
@@ -170,6 +229,10 @@ shape = SubResource("CapsuleShape2D_gjrsy")
 [node name="Camera2D2" type="Camera2D" parent="Marker2D"]
 physics_interpolation_mode = 1
 zoom = Vector2(1.72, 1.72)
+limit_left = -1350
+limit_top = -650
+limit_right = 1350
+limit_bottom = 650
 
 [node name="PhantomCameraHost" type="Node" parent="Marker2D/Camera2D2"]
 script = ExtResource("19_dk3br")
@@ -178,3 +241,5 @@ script = ExtResource("19_dk3br")
 energy = 0.3
 texture = ExtResource("29_7qf1l")
 texture_scale = 0.4
+
+[connection signal="animation_finished" from="UI/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

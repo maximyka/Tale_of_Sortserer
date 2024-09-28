@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dpjv51tnse0km"]
+
+[ext_resource type="PackedScene" uid="uid://bltitciucq725" path="res://scenes/nps/nps.tscn" id="1_wfndi"]
+[ext_resource type="Texture2D" uid="uid://cq5f3mburst6" path="res://Textures/NPC/Man.png" id="2_ee0aq"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ot1cs"]
+
+[node name="Men" instance=ExtResource("1_wfndi")]
+
+[node name="CollisionShape2D" parent="." index="0"]
+shape = SubResource("CapsuleShape2D_ot1cs")
+
+[node name="Sprite2D" parent="." index="2"]
+position = Vector2(-1, -17)
+texture = ExtResource("2_ee0aq")
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(1, -14)
+
+[node name="Label" parent="." index="4"]
+offset_top = -80.0
+offset_right = 21.0
+offset_bottom = -60.0

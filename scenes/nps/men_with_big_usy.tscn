@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://b1ce86b54ujuq"]
+
+[ext_resource type="PackedScene" uid="uid://bltitciucq725" path="res://scenes/nps/nps.tscn" id="1_2rqoo"]
+[ext_resource type="Texture2D" uid="uid://bakhbfxix107d" path="res://Textures/NPC/Men_with_big_usy.png" id="2_aorre"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_utjxr"]
+radius = 7.0
+height = 20.0
+
+[node name="MenWithBigUsy" instance=ExtResource("1_2rqoo")]
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_utjxr")
+
+[node name="Sprite2D" parent="." index="2"]
+position = Vector2(3, -22)
+texture = ExtResource("2_aorre")
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(-1, -11)
+
+[node name="Label" parent="." index="4"]
+offset_left = -19.0
+offset_top = -71.0
+offset_right = 22.0
+offset_bottom = -51.0

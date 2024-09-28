@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://dmyiqvfl35523"]
+
+[ext_resource type="PackedScene" uid="uid://bltitciucq725" path="res://scenes/nps/nps.tscn" id="1_rldu2"]
+[ext_resource type="Texture2D" uid="uid://dtym1xwagsqbx" path="res://Textures/NPC/Plant-man.png" id="2_y6w8l"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qgk3v"]
+radius = 5.0
+height = 28.0
+
+[node name="PlantMen" instance=ExtResource("1_rldu2")]
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(1, 5)
+shape = SubResource("CapsuleShape2D_qgk3v")
+
+[node name="Sprite2D" parent="." index="2"]
+position = Vector2(6, -14)
+texture = ExtResource("2_y6w8l")
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(0, -10)
+
+[node name="Label" parent="." index="4"]
+offset_top = -89.0
+offset_bottom = -69.0

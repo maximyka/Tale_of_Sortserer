@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://dbbrrsu5hgadc"]
+
+[ext_resource type="PackedScene" uid="uid://cbbovkx5qmev0" path="res://scenes/Objects/object.tscn" id="1_5eqv5"]
+[ext_resource type="Texture2D" uid="uid://gkbobtgvw0rr" path="res://Textures/Object/Artafsct_museum.png" id="2_7co8t"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ghkea"]
+size = Vector2(43, 10)
+
+[node name="ArtafsctMuseum" instance=ExtResource("1_5eqv5")]
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(-0.5, 7)
+shape = SubResource("RectangleShape2D_ghkea")
+
+[node name="Sprite2D" parent="." index="1"]
+position = Vector2(1, -17)
+texture = ExtResource("2_7co8t")

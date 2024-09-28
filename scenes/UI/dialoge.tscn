@@ -45,7 +45,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
 script = ExtResource("1_x1q8r")
 
 [node name="Panel" type="Panel" parent="."]
@@ -94,3 +93,12 @@ visible_ratio = 0.0
 libraries = {
 "": SubResource("AnimationLibrary_qly0e")
 }
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 673.0
+offset_top = 584.0
+offset_right = 847.0
+offset_bottom = 604.0
+
+[connection signal="animation_finished" from="Panel/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

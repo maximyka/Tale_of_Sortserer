@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwol4rps4xxa3"]
+
+[ext_resource type="PackedScene" uid="uid://cbbovkx5qmev0" path="res://scenes/Objects/object.tscn" id="1_rftko"]
+[ext_resource type="Texture2D" uid="uid://bxfdjpf0tgvrj" path="res://Textures/Object/Musor.png" id="2_rjs0r"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_46hda"]
+size = Vector2(32, 17)
+
+[node name="Musor" instance=ExtResource("1_rftko")]
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, 9)
+shape = SubResource("RectangleShape2D_46hda")
+
+[node name="Sprite2D" parent="." index="1"]
+position = Vector2(0, -8)
+texture = ExtResource("2_rjs0r")
