@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://cuh76hc8sosy"]
+
+[ext_resource type="PackedScene" uid="uid://cbbovkx5qmev0" path="res://scenes/Objects/object.tscn" id="1_o0m7a"]
+[ext_resource type="Texture2D" uid="uid://dtnj2uijhm48j" path="res://Textures/Object/Camp_gg.png" id="2_rlnjp"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2ri1b"]
+size = Vector2(3.30961, 57.142)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dvrep"]
+size = Vector2(2.5, 66.5987)
+
+[node name="CampGG" instance=ExtResource("1_o0m7a")]
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(30.3908, 2.7289)
+rotation = -0.595266
+shape = SubResource("RectangleShape2D_2ri1b")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." index="1"]
+position = Vector2(-12.6381, -5.0053)
+rotation = 1.02509
+shape = SubResource("RectangleShape2D_dvrep")
+
+[node name="Sprite2D" parent="." index="2"]
+position = Vector2(-2, -27)
+texture = ExtResource("2_rlnjp")

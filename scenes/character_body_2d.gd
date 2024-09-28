@@ -1,8 +1,6 @@
 extends CharacterBody2D
-
-@export var SPEED = 300.0
-
 @export var speed = 400
+var speeding = 0
 
 var target = position
 var target_node
@@ -22,7 +20,7 @@ var combo = '':
 			combo = ''
 
 func _ready() -> void:
-	target_node = $"../target"
+	target_node = $"../../target"
 	var tween = get_tree().create_tween()
 	tween.tween_property(GlobalWorldEnvironment, 'environment:adjustment_brightness', 1, 1)
 	await tween.finished
@@ -48,10 +46,13 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	velocity = position.direction_to(target) * speed
+	if speeding < speed:
+		speeding+=1200*delta
+	velocity = position.direction_to(target) * speeding
 	if position.distance_to(target) > 10:
 		player_anim.play('Run')
 		move_and_slide()
 	else:
+		speeding = 0
 		player_anim.play('Idle')
 		target_node.visible = false

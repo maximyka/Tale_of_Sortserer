@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://ch1v6iuqbho2c"]
+[gd_scene load_steps=7 format=3 uid="uid://ch1v6iuqbho2c"]
 
 [ext_resource type="Script" path="res://scenes/UI/node_2d.gd" id="1_gcb2d"]
 [ext_resource type="Texture2D" uid="uid://ch3lvstdcaeww" path="res://Textures/UI/Start menu.png" id="2_x3wc7"]
 [ext_resource type="Texture2D" uid="uid://b06frotyrc5ql" path="res://Textures/UI/Играть.png" id="3_23alw"]
 [ext_resource type="Texture2D" uid="uid://wckyotalm7u3" path="res://Textures/UI/Титры.png" id="4_yya2k"]
 [ext_resource type="Texture2D" uid="uid://bhoh613t2apgw" path="res://Textures/UI/ВЫйти.png" id="5_6nrqe"]
+[ext_resource type="AudioStream" uid="uid://cvrmrdidio6fs" path="res://Music/Sortser_Menu_Theme_START.mp3" id="6_r72rt"]
 
 [node name="MenuStart" type="Node2D"]
 script = ExtResource("1_gcb2d")
@@ -55,6 +56,11 @@ offset_right = 309.0
 offset_bottom = 125.0
 grow_vertical = 2
 texture_normal = ExtResource("5_6nrqe")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_r72rt")
+volume_db = -8.432
+autoplay = true
 
 [connection signal="pressed" from="Panel/Start" to="." method="Start_button"]
 [connection signal="pressed" from="Panel/Credits" to="." method="_on_credits_pressed"]

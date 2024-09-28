@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cpgolhxefscr8"]
+
+[ext_resource type="PackedScene" uid="uid://cbbovkx5qmev0" path="res://scenes/Objects/object.tscn" id="1_tylus"]
+[ext_resource type="Texture2D" uid="uid://cmaa26qdfnxdf" path="res://Textures/Object/Stone1.png" id="2_tnxtx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o3k7a"]
+size = Vector2(39, 14)
+
+[node name="Stone" instance=ExtResource("1_tylus")]
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(-1.5, 16)
+shape = SubResource("RectangleShape2D_o3k7a")
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_tnxtx")

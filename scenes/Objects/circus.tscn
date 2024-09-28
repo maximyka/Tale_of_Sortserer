@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://c2opnd35fikpf"]
+
+[ext_resource type="PackedScene" uid="uid://cbbovkx5qmev0" path="res://scenes/Objects/object.tscn" id="1_021bf"]
+[ext_resource type="Texture2D" uid="uid://dddw4toyk1caj" path="res://Textures/Object/Circus.png" id="2_i0huw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vsg4p"]
+size = Vector2(120, 75.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qu2ov"]
+size = Vector2(192, 14.5)
+
+[node name="Circus" instance=ExtResource("1_021bf")]
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(-127, 21.5)
+shape = SubResource("RectangleShape2D_vsg4p")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." index="1"]
+position = Vector2(133, 22)
+shape = SubResource("RectangleShape2D_vsg4p")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="." index="2"]
+position = Vector2(0, -9)
+shape = SubResource("RectangleShape2D_qu2ov")
+
+[node name="Sprite2D" parent="." index="3"]
+position = Vector2(6, -65)
+texture = ExtResource("2_i0huw")

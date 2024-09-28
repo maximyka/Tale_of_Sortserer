@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cb3wduspk0dtf"]
+
+[ext_resource type="PackedScene" uid="uid://cbbovkx5qmev0" path="res://scenes/Objects/object.tscn" id="1_bds1f"]
+[ext_resource type="Texture2D" uid="uid://d3qex5gm08ar6" path="res://Textures/Object/kassa.png" id="2_64kqg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uyt3v"]
+size = Vector2(109, 38)
+
+[node name="Kassa" instance=ExtResource("1_bds1f")]
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(-0.5, 28)
+shape = SubResource("RectangleShape2D_uyt3v")
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_64kqg")

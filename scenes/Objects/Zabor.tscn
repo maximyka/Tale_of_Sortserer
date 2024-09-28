@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://dp825dxln1jc7"]
+
+[ext_resource type="PackedScene" uid="uid://cbbovkx5qmev0" path="res://scenes/Objects/object.tscn" id="1_qd067"]
+[ext_resource type="Texture2D" uid="uid://bqadkmsfw7e0r" path="res://Textures/Object/Zabor.png" id="2_q5fja"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5pp1q"]
+size = Vector2(119, 11)
+
+[node name="Zabor" instance=ExtResource("1_qd067")]
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(3.5, 26.5)
+shape = SubResource("RectangleShape2D_5pp1q")
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_q5fja")

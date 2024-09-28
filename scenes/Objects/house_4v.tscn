@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://kwtk1no1wjs1"]
+
+[ext_resource type="PackedScene" uid="uid://cbbovkx5qmev0" path="res://scenes/Objects/object.tscn" id="1_0w3gu"]
+[ext_resource type="Texture2D" uid="uid://ctv5l1xl6soe2" path="res://Textures/Object/House4.png" id="2_t25mq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ddrdr"]
+size = Vector2(232, 70.5)
+
+[node name="House4V" instance=ExtResource("1_0w3gu")]
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(3, 38.25)
+shape = SubResource("RectangleShape2D_ddrdr")
+
+[node name="Sprite2D" parent="." index="1"]
+position = Vector2(0, -75)
+texture = ExtResource("2_t25mq")

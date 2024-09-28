@@ -20,13 +20,21 @@ boot_splash/show_image=false
 GlobalWorldEnvironment="*res://res/world_environment.tscn"
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 
+[display]
+
+window/stretch/mode="canvas_items"
+
 [dotnet]
 
 project/assembly_name="Artifact jam"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/phantom_camera/plugin.cfg")
+enabled=PackedStringArray()
+
+[gui]
+
+theme/custom_font="res://Pangolin-Regular.ttf"
 
 [importer_defaults]
 
@@ -113,3 +121,4 @@ RClick={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+renderer/rendering_method="mobile"

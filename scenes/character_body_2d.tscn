@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://0brdn6o5jaxv"]
+[gd_scene load_steps=33 format=3 uid="uid://0brdn6o5jaxv"]
 
 [ext_resource type="Script" path="res://scenes/character_body_2d.gd" id="1_4kowe"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="2_aa23l"]
@@ -18,16 +18,17 @@
 [ext_resource type="Texture2D" uid="uid://xd6tvanpm5np" path="res://Player/Player_Idle20.png" id="16_8hcy7"]
 [ext_resource type="Texture2D" uid="uid://6opb0y20s5wm" path="res://Player/Player_Idle21.png" id="17_lmpa8"]
 [ext_resource type="Texture2D" uid="uid://dy5nfgmhh757t" path="res://Player/Player_Idle22.png" id="18_7dvpa"]
-[ext_resource type="Texture2D" uid="uid://dko3kpk8110om" path="res://Player_Move/Player_Movement1.png" id="19_88gk8"]
+[ext_resource type="Texture2D" uid="uid://dko3kpk8110om" path="res://Textures/Player_Move/Player_Movement1.png" id="19_88gk8"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="19_dk3br"]
-[ext_resource type="Texture2D" uid="uid://828iklnuefvb" path="res://Player_Move/Player_Movement2.png" id="20_fqcvf"]
-[ext_resource type="Texture2D" uid="uid://ccei6jrvs28c4" path="res://Player_Move/Player_Movement3.png" id="21_m1c0i"]
-[ext_resource type="Texture2D" uid="uid://bbe36vpnty3bo" path="res://Player_Move/Player_Movement4.png" id="22_nd1oe"]
-[ext_resource type="Texture2D" uid="uid://by1pskif26om2" path="res://Player_Move/Player_Movement5.png" id="23_sd3np"]
-[ext_resource type="Texture2D" uid="uid://dtx22bia0p0ag" path="res://Player_Move/Player_Movement6.png" id="24_lg7m8"]
-[ext_resource type="Texture2D" uid="uid://ed8yghw1wdus" path="res://Player_Move/Player_Movement7.png" id="25_4b8yv"]
-[ext_resource type="Texture2D" uid="uid://calakn01trku3" path="res://Player_Move/Player_Movement8.png" id="26_u2n3h"]
-[ext_resource type="Texture2D" uid="uid://v1j5pda26cbt" path="res://Player_Move/Player_Movement9.png" id="27_dsrke"]
+[ext_resource type="Texture2D" uid="uid://828iklnuefvb" path="res://Textures/Player_Move/Player_Movement2.png" id="20_fqcvf"]
+[ext_resource type="Texture2D" uid="uid://ccei6jrvs28c4" path="res://Textures/Player_Move/Player_Movement3.png" id="21_m1c0i"]
+[ext_resource type="Texture2D" uid="uid://bbe36vpnty3bo" path="res://Textures/Player_Move/Player_Movement4.png" id="22_nd1oe"]
+[ext_resource type="Texture2D" uid="uid://by1pskif26om2" path="res://Textures/Player_Move/Player_Movement5.png" id="23_sd3np"]
+[ext_resource type="Texture2D" uid="uid://dtx22bia0p0ag" path="res://Textures/Player_Move/Player_Movement6.png" id="24_lg7m8"]
+[ext_resource type="Texture2D" uid="uid://ed8yghw1wdus" path="res://Textures/Player_Move/Player_Movement7.png" id="25_4b8yv"]
+[ext_resource type="Texture2D" uid="uid://calakn01trku3" path="res://Textures/Player_Move/Player_Movement8.png" id="26_u2n3h"]
+[ext_resource type="Texture2D" uid="uid://v1j5pda26cbt" path="res://Textures/Player_Move/Player_Movement9.png" id="27_dsrke"]
+[ext_resource type="Texture2D" uid="uid://vtj0q2vbse7l" path="res://Textures/light.png" id="29_7qf1l"]
 
 [sub_resource type="Resource" id="Resource_jcypl"]
 script = ExtResource("3_lti10")
@@ -114,6 +115,7 @@ height = 20.0
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(1, 1.00392)
 script = ExtResource("1_4kowe")
+speed = 150
 
 [node name="Camera2D" type="Node2D" parent="." node_paths=PackedStringArray("follow_target")]
 script = ExtResource("2_aa23l")
@@ -140,19 +142,19 @@ scale = Vector2(4.12381, 4.12381)
 
 [node name="q" type="TextureRect" parent="UI/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("3_r0gam")
+texture = ExtResource("4_3syo0")
 
 [node name="w" type="TextureRect" parent="UI/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("4_3syo0")
+texture = ExtResource("6_gig38")
 
 [node name="e" type="TextureRect" parent="UI/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("5_rte8w")
+texture = ExtResource("3_r0gam")
 
 [node name="r" type="TextureRect" parent="UI/HBoxContainer"]
 layout_mode = 2
-texture = ExtResource("6_gig38")
+texture = ExtResource("5_rte8w")
 
 [node name="Player" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_xl0kc")
@@ -171,3 +173,8 @@ zoom = Vector2(1.72, 1.72)
 
 [node name="PhantomCameraHost" type="Node" parent="Marker2D/Camera2D2"]
 script = ExtResource("19_dk3br")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 0.3
+texture = ExtResource("29_7qf1l")
+texture_scale = 0.4

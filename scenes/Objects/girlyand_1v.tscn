@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://drrbv83fakc63"]
+
+[ext_resource type="PackedScene" uid="uid://cbbovkx5qmev0" path="res://scenes/Objects/object.tscn" id="1_1g16m"]
+[ext_resource type="Texture2D" uid="uid://cxy1hwlkkuh08" path="res://Textures/Object/Girlyand/Girlyand1.png" id="2_duigp"]
+[ext_resource type="Texture2D" uid="uid://vtj0q2vbse7l" path="res://Textures/light.png" id="3_bm8wl"]
+
+[node name="Girlyand1V" instance=ExtResource("1_1g16m")]
+top_level = true
+
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_duigp")
+
+[node name="PointLight2D" type="PointLight2D" parent="." index="2"]
+energy = 0.65
+texture = ExtResource("3_bm8wl")
