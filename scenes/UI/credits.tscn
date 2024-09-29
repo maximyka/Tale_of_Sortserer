@@ -1,7 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dwm5rilvybacm"]
+[gd_scene load_steps=8 format=3 uid="uid://dwm5rilvybacm"]
 
 [ext_resource type="Script" path="res://scenes/UI/credits.gd" id="1_53uxo"]
 [ext_resource type="Texture2D" uid="uid://bhoh613t2apgw" path="res://Textures/UI/ВЫйти.png" id="2_7k2bd"]
+[ext_resource type="Texture2D" uid="uid://bxoqe64j1al2p" path="res://Textures/UI/Kredit.png" id="2_jgnpf"]
+[ext_resource type="Texture2D" uid="uid://b0t1jwbrp424f" path="res://Textures/1_1.png" id="2_pjpeb"]
 
 [sub_resource type="Animation" id="Animation_4a58i"]
 length = 0.001
@@ -49,6 +51,12 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_53uxo")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(588, 323)
+scale = Vector2(19.375, 11.0938)
+texture = ExtResource("2_pjpeb")
+
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 13
@@ -66,18 +74,16 @@ grow_vertical = 2
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 41
-text = "Progremmers:
-
-Art-desiners:
-
-Sound-desiners:
-
-Game-desiners:
-
-Narrative designers:
-"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Label"]
+layout_mode = 0
+offset_left = -119.0
+offset_top = 3.0
+offset_right = 131.0
+offset_bottom = 53.0
+texture = ExtResource("2_jgnpf")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

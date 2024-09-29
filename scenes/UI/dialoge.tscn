@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://tle4lijd0xvs"]
+[gd_scene load_steps=6 format=3 uid="uid://tle4lijd0xvs"]
 
 [ext_resource type="Script" path="res://scenes/UI/dialoge.gd" id="1_x1q8r"]
+[ext_resource type="Texture2D" uid="uid://baa0wavbyvvhb" path="res://Textures/UI/Panel.png" id="2_53b8m"]
 
 [sub_resource type="Animation" id="Animation_2yx6p"]
 length = 0.001
@@ -57,16 +58,22 @@ anchor_bottom = 1.0
 offset_left = -280.0
 offset_top = -168.0
 offset_right = 280.0
-offset_bottom = -32.0
+offset_bottom = -33.0
 grow_horizontal = 2
 grow_vertical = 0
 
+[node name="Sprite2D" type="Sprite2D" parent="Panel"]
+position = Vector2(280, 67)
+rotation = 3.14193
+texture = ExtResource("2_53b8m")
+
 [node name="Label" type="Label" parent="Panel"]
 layout_mode = 0
-offset_left = 16.0
+offset_left = 19.0
 offset_top = 8.0
-offset_right = 56.0
-offset_bottom = 31.0
+offset_right = 59.0
+offset_bottom = 34.0
+theme_override_colors/font_color = Color(1, 0.741176, 0, 1)
 theme_override_font_sizes/font_size = 20
 text = "ИМЯ"
 
@@ -93,12 +100,5 @@ visible_ratio = 0.0
 libraries = {
 "": SubResource("AnimationLibrary_qly0e")
 }
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 0
-offset_left = 673.0
-offset_top = 584.0
-offset_right = 847.0
-offset_bottom = 604.0
 
 [connection signal="animation_finished" from="Panel/AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

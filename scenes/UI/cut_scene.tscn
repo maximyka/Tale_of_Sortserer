@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://1esbn3mbqvp3"]
+[gd_scene load_steps=16 format=3 uid="uid://1esbn3mbqvp3"]
 
 [ext_resource type="Script" path="res://scenes/UI/cut_scene.gd" id="1_mlfy8"]
 [ext_resource type="Texture2D" uid="uid://dhxemp5lvkswr" path="res://Textures/CG/2.png" id="1_twlri"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://dv6leovyiwi5j" path="res://Textures/CG/micro.png" id="9_1n47o"]
 [ext_resource type="Texture2D" uid="uid://c2low112yebp6" path="res://Textures/CG/sogl.png" id="10_75tdy"]
 [ext_resource type="AudioStream" uid="uid://ceeihykt1y3em" path="res://Music/sad sortser.mp3" id="12_l3ain"]
+[ext_resource type="PackedScene" uid="uid://tle4lijd0xvs" path="res://scenes/UI/dialoge.tscn" id="13_7ydaq"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_v718c"]
 animations = [{
@@ -51,6 +52,202 @@ animations = [{
 "speed": 0.0
 }]
 
+[sub_resource type="GDScript" id="GDScript_84yx1"]
+script/source = "extends Control
+
+@onready var animation_player: AnimationPlayer = $Panel/AnimationPlayer
+@onready var animated_sprite_2d: AnimatedSprite2D = $\"../../AnimatedSprite2D\"
+
+var count_texts = 0
+var max_texts = 10
+
+var object_name = 'Рассказчик'
+var text1 = ''
+var text2 = ''
+var text3 = ''
+var text4 = ''
+var text5 = ''
+var text6 = ''
+var text7 = ''
+var text8 = ''
+var text9 = ''
+var text10 = ''
+var text11 = ''
+var text12 = ''
+var text13 = ''
+var text14 = ''
+var text15 = ''
+var text16 = ''
+var text17 = ''
+var text18 = ''
+var text19 = ''
+var text20 = ''
+var text21 = ''
+var text22 = ''
+var text23 = ''
+var text24 = ''
+var text25 = ''
+var text26 = ''
+var text27 = ''
+var text28 = ''
+var text29 = ''
+
+func _ready() -> void:
+	new_text()
+	$Panel/Label.text = 'Рассказчик'
+
+func _process(delta: float) -> void:
+	if Input.is_anything_pressed() and !animation_player.is_playing() and get_parent().visible:
+		if count_texts == max_texts:
+			if animated_sprite_2d.frame == 9:
+				$\"../..\".finished()
+			count_texts = 0
+			animated_sprite_2d.frame += 1
+			new_text()
+		match count_texts:
+			0:
+				$Panel/RichTextLabel.text = text1
+				animation_player.play('a')
+			1:
+				$Panel/RichTextLabel.text = text2
+				animation_player.play('a')
+			2:
+				$Panel/RichTextLabel.text = text3
+				animation_player.play('a')
+			3:
+				$Panel/RichTextLabel.text = text4
+				animation_player.play('a')
+			4:
+				$Panel/RichTextLabel.text = text5
+				animation_player.play('a')
+			5:
+				$Panel/RichTextLabel.text = text6
+				animation_player.play('a')
+			6:
+				$Panel/RichTextLabel.text = text7
+				animation_player.play('a')
+			7:
+				$Panel/RichTextLabel.text = text8
+				animation_player.play('a')
+			8:
+				$Panel/RichTextLabel.text = text9
+				animation_player.play('a')
+			9:
+				$Panel/RichTextLabel.text = text10
+				animation_player.play('a')
+			10:
+				$Panel/RichTextLabel.text = text11
+				animation_player.play('a')
+			11:
+				$Panel/RichTextLabel.text = text12
+				animation_player.play('a')
+			12:
+				$Panel/RichTextLabel.text = text13
+				animation_player.play('a')
+			13:
+				$Panel/RichTextLabel.text = text14
+				animation_player.play('a')
+			14:
+				$Panel/RichTextLabel.text = text15
+				animation_player.play('a')
+			15:
+				$Panel/RichTextLabel.text = text16
+				animation_player.play('a')
+			16:
+				$Panel/RichTextLabel.text = text17
+				animation_player.play('a')
+			17:
+				$Panel/RichTextLabel.text = text18
+				animation_player.play('a')
+			18:
+				$Panel/RichTextLabel.text = text19
+				animation_player.play('a')
+			19:
+				$Panel/RichTextLabel.text = text20
+				animation_player.play('a')
+			20:
+				$Panel/RichTextLabel.text = text21
+				animation_player.play('a')
+			21:
+				$Panel/RichTextLabel.text = text22
+				animation_player.play('a')
+			22:
+				$Panel/RichTextLabel.text = text23
+				animation_player.play('a')
+			23:
+				$Panel/RichTextLabel.text = text24
+				animation_player.play('a')
+			24:
+				$Panel/RichTextLabel.text = text25
+				animation_player.play('a')
+			25:
+				$Panel/RichTextLabel.text = text26
+				animation_player.play('a')
+			26:
+				$Panel/RichTextLabel.text = text27
+				animation_player.play('a')
+			27:
+				$Panel/RichTextLabel.text = text28
+				animation_player.play('a')
+			28:
+				$Panel/RichTextLabel.text = text29
+				animation_player.play('a')
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	count_texts += 1
+
+func new_text():
+	match animated_sprite_2d.frame+1:
+		1:
+			max_texts = 5
+			text1 = 'Мырлин - самый неудачливый волшебник Магического Училища.'
+			text2 = 'Одногруппники издевались над ним, профессора считали пустым местом.'
+			text3 = 'Его заклинания вызывали только смех, а изучать настоящую магию у него не получалось.'
+			text4 = 'Отчисление Мырлина было лишь делом времени.'
+			text5 = '\"ОТЧИСЛЕН!\"'
+		2:
+			max_texts = 2
+			text1 = '\"Не-е-ет!\"'
+			text2 = 'Случилась настоящая трагедия. Мырлин не знал, что делать дальше.'
+		3:
+			max_texts = 3
+			text1 = 'Тёмной ночью, когда казалось, что даже небо смеётся над неудачливым волшебником,'
+			text2 = 'Мырлин прошёл через ворота Училища и отправился куда глаза глядят.'
+			text3 = '\"Что делать дальше? Почему я не могу получить магические навыки просто так?\"'
+		4:
+			max_texts = 4
+			text1 = '\"Что это?!\"'
+			text2 = 'Неужели мир услышал просьбы бедного Мырлина?'
+			text3 = 'Вот он, ключ к успеху. Не надо ни учиться, ни тренироваться.'
+			text4 = '\"Нельзя терять ни минуты! Я покажу этим зазнайкам из Училища, на что способен Мырлин!\"'
+		5:
+			max_texts = 1
+			text1 = '\"Приветствую, молодой человек! Я знаю о твоей беде и я могу тебе помочь!\"'
+		6:
+			max_texts = 1
+			text1 = '\"Вот это удача! Уже завтра всё Училище будет умолять меня вернуться обратно к ним.\"'
+		7:
+			max_texts = 2
+			text1 = '\"Подпиши одну небольшую бумажечку, юноша.\"'
+			text2 = '\"Ох, какой же ты молодой, сочный, ням-ням-ням.\"'
+		8:
+			max_texts = 3
+			text1 = 'Мырлин подписал договор, даже не прочитав его.'
+			text2 = '\"Эта бабушка такая милая. Разве она способна на зло?\"'
+			text3 = 'Интеллект никогда не был сильной стороной Мырлина, и в этот раз эта особенность стала для него фатальной.'
+		9:
+			max_texts = 3
+			text1 = '\"Уа-ха-ха! Теперь твоё тело моё, идиот!\"'
+			text2 = '\"Я приготовлю из него замечательное рагу!\"'
+			text3 = '\"А твоя душа мне больше не нужна, отправляйся прочь!\"'
+		10:
+			max_texts = 4
+			text1 = 'Душа Мырлина тотчас же отделилась от тела и устремилась вверх.'
+			text2 = 'Куда она отправилась? Есть ли у колдуна шанс вернуть тело обратно?'
+			text3 = 'Сам Мырлин не знал ответов, в его теперь уже прозрачной и невесомой голове была только одна мысль.'
+			text4 = '\"Ой-ой-ой!\"'
+"
+
 [node name="CutScene" type="Node2D"]
 script = ExtResource("1_mlfy8")
 
@@ -58,22 +255,33 @@ script = ExtResource("1_mlfy8")
 scale = Vector2(0.6, 0.6)
 sprite_frames = SubResource("SpriteFrames_v718c")
 autoplay = "default"
-frame = 9
-frame_progress = 1.0
 speed_scale = 0.4
 centered = false
 
 [node name="Label" type="Label" parent="."]
-offset_left = 687.0
-offset_top = 600.0
-offset_right = 1371.0
-offset_bottom = 650.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 414.0
+offset_top = 613.0
+offset_right = 1098.0
+offset_bottom = 663.0
+grow_horizontal = 2
+grow_vertical = 0
 theme_override_font_sizes/font_size = 26
-text = "Нажмите 'Пробел', чтобы продолжить"
+text = "Нажмите, чтобы продолжить"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_l3ain")
 volume_db = -9.369
 autoplay = true
+parameters/looping = true
 
-[connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Dialoge" parent="CanvasLayer" instance=ExtResource("13_7ydaq")]
+script = SubResource("GDScript_84yx1")
+
+[editable path="CanvasLayer/Dialoge"]

@@ -1,9 +1,12 @@
-[gd_scene load_steps=28 format=4 uid="uid://bwh5hhicvnmt4"]
+[gd_scene load_steps=32 format=4 uid="uid://bwh5hhicvnmt4"]
 
 [ext_resource type="PackedScene" uid="uid://cmaejy2uejwa6" path="res://scenes/Objects/colomne.tscn" id="1_lw4ok"]
 [ext_resource type="Texture2D" uid="uid://b0t1jwbrp424f" path="res://Textures/1_1.png" id="1_r46ng"]
 [ext_resource type="PackedScene" uid="uid://bbinujha8jtly" path="res://scenes/Objects/conteiner_with_bones.tscn" id="2_5nvwu"]
+[ext_resource type="PackedScene" uid="uid://ck7y73s1nh3hd" path="res://scenes/nps/person_1.tscn" id="2_rvfq3"]
 [ext_resource type="PackedScene" uid="uid://cpgolhxefscr8" path="res://scenes/Objects/Stone.tscn" id="3_dfuwp"]
+[ext_resource type="PackedScene" uid="uid://1shay0t0hrrn" path="res://scenes/nps/person_4.tscn" id="3_ltyov"]
+[ext_resource type="PackedScene" uid="uid://ce50bdokhpjgn" path="res://scenes/nps/gui_men.tscn" id="4_4ab8f"]
 [ext_resource type="PackedScene" uid="uid://dbbrrsu5hgadc" path="res://scenes/Objects/artafsct_museum.tscn" id="4_mdtb5"]
 [ext_resource type="PackedScene" uid="uid://0brdn6o5jaxv" path="res://scenes/character_body_2d.tscn" id="5_jx5vk"]
 [ext_resource type="Texture2D" uid="uid://cj3avjp230g5f" path="res://Textures/tile/Museum.png" id="6_gerfm"]
@@ -178,10 +181,34 @@ func _on_area_2d_body_exited(_body: Node2D) -> void:
 "
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_700lk"]
-radius = 60.208
+radius = 120.15
 
 [sub_resource type="GDScript" id="GDScript_p6ta3"]
 script/source = "extends Sprite2D
+
+var ready_to_space = false
+
+func _ready() -> void:
+	$CanvasLayer.visible = false
+	$Label.visible = false
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed(\"ui_accept\") and ready_to_space:
+		$CanvasLayer.visible = [true, false][int($CanvasLayer.visible)]
+		$CanvasLayer/Dialoge.count_texts = 0
+
+func _on_area_2d_body_entered(_body: Node2D) -> void:
+	ready_to_space = true
+	$Label.visible = true
+
+func _on_area_2d_body_exited(_body: Node2D) -> void:
+	$CanvasLayer/Dialoge.count_texts = 0
+	ready_to_space = false
+	$Label.visible = false
+"
+
+[sub_resource type="GDScript" id="GDScript_k3lq3"]
+script/source = "extends Node2D
 
 var ready_to_space = false
 
@@ -226,6 +253,33 @@ shape = SubResource("SegmentShape2D_8ke0x")
 y_sort_enabled = true
 
 [node name="NPS" type="Node2D" parent="Objects"]
+y_sort_enabled = true
+
+[node name="Person1" parent="Objects/NPS" instance=ExtResource("2_rvfq3")]
+position = Vector2(250, 220)
+
+[node name="Dialoge" parent="Objects/NPS/Person1/CanvasLayer" index="0"]
+max_texts = 2
+object_name = "Прохожий"
+text1 = "Музею нужен капитальный ремонт, мой брат уже несколько дней держит колонну."
+object_name2 = "Прохожий"
+text2 = "Без него ничего не рухнет, но ему нравится чувствовать себя важным."
+
+[node name="Person4" parent="Objects/NPS" instance=ExtResource("3_ltyov")]
+position = Vector2(712, 522)
+scale = Vector2(0.80212, 0.80212)
+
+[node name="Dialoge" parent="Objects/NPS/Person4/CanvasLayer" index="0"]
+max_texts = 3
+object_name = "Прохожий"
+text1 = "Пам-пам-пам-пам..."
+object_name2 = "Прохожий"
+text2 = "Хорошая музыка, да?"
+object_name3 = "Прохожий"
+text3 = "Ты же её слышишь?"
+
+[node name="GuiMen" parent="Objects/NPS" instance=ExtResource("4_4ab8f")]
+position = Vector2(798, 62)
 
 [node name="Colomne" parent="Objects" instance=ExtResource("1_lw4ok")]
 position = Vector2(862, 137)
@@ -278,13 +332,15 @@ vertical_alignment = 1
 visible = false
 
 [node name="Dialoge" parent="Objects/ConteinerWithBones/CanvasLayer" instance=ExtResource("14_3p2rj")]
-max_texts = 1
-object_name = "Экспанат"
-text1 = "Привет1234"
+max_texts = 2
+object_name = "Контейнер с костями"
+text1 = "Уникальный экспонат, развивающий воображение."
+object_name2 = "Контейнер с костями"
+text2 = "Пожалуйста, не воображайте ничего, что может навредить другим посетителям или испортить имущество музея."
 
 [node name="Stone" parent="Objects" instance=ExtResource("3_dfuwp")]
 top_level = true
-position = Vector2(273, 436)
+position = Vector2(276, 436)
 script = SubResource("GDScript_mfdph")
 
 [node name="Area2D" type="Area2D" parent="Objects/Stone"]
@@ -310,8 +366,8 @@ visible = false
 
 [node name="Dialoge" parent="Objects/Stone/CanvasLayer" instance=ExtResource("14_3p2rj")]
 max_texts = 1
-object_name = "Экспанат"
-text1 = "Привет2"
+object_name = "Камень"
+text1 = "Это камень."
 
 [node name="ArtafsctMuseum" parent="Objects" instance=ExtResource("4_mdtb5")]
 position = Vector2(1083, 330)
@@ -408,7 +464,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exit/Area2D"]
-position = Vector2(33, 67)
+position = Vector2(-17, 67)
 shape = SubResource("CircleShape2D_700lk")
 
 [node name="Label" type="Label" parent="Exit"]
@@ -456,14 +512,48 @@ vertical_alignment = 1
 visible = false
 
 [node name="Dialoge" parent="Kartina/CanvasLayer" instance=ExtResource("14_3p2rj")]
-max_texts = 1
+max_texts = 2
 object_name = "Картина"
-text1 = "Да"
+text1 = "Зимнее утро после ночного снегопада. Картина маслом."
+text2 = "*М-м-м, масло...*"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("16_4cv01")
 volume_db = -12.18
 autoplay = true
+parameters/looping = true
+
+[node name="Toy" type="Node2D" parent="."]
+position = Vector2(866, 458)
+script = SubResource("GDScript_k3lq3")
+
+[node name="Area2D" type="Area2D" parent="Toy"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Toy/Area2D"]
+position = Vector2(0, -14)
+shape = SubResource("CircleShape2D_miabi")
+
+[node name="Label" type="Label" parent="Toy"]
+visible = false
+offset_left = -20.0
+offset_top = -49.0
+offset_right = 21.0
+offset_bottom = -29.0
+text = "Space"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Toy"]
+visible = false
+
+[node name="Dialoge" parent="Toy/CanvasLayer" instance=ExtResource("14_3p2rj")]
+max_texts = 2
+object_name = "Кукла"
+text1 = "Эта кукла служила в кукольном театре кукольного города."
+object_name2 = "Кукла"
+text2 = "По крайней мере, так говорит она сама."
 
 [connection signal="body_entered" from="Objects/ConteinerWithBones/Area2D" to="Objects/ConteinerWithBones" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Objects/ConteinerWithBones/Area2D" to="Objects/ConteinerWithBones" method="_on_area_2d_body_exited"]
@@ -473,3 +563,8 @@ autoplay = true
 [connection signal="body_exited" from="Exit/Area2D" to="Exit" method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="Kartina/Area2D" to="Kartina" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Kartina/Area2D" to="Kartina" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="Toy/Area2D" to="Toy" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Toy/Area2D" to="Toy" method="_on_area_2d_body_exited"]
+
+[editable path="Objects/NPS/Person1"]
+[editable path="Objects/NPS/Person4"]

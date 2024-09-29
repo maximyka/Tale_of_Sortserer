@@ -1,11 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://dql4fpcl2tnw7"]
+[gd_scene load_steps=6 format=3 uid="uid://dql4fpcl2tnw7"]
 
 [ext_resource type="PackedScene" uid="uid://bltitciucq725" path="res://scenes/nps/nps.tscn" id="1_emfqa"]
 [ext_resource type="Texture2D" uid="uid://r1xdcrweww13" path="res://Textures/NPC/Aligator.png" id="2_clb3e"]
+[ext_resource type="Texture2D" uid="uid://cq5f3mburst6" path="res://Textures/NPC/Man.png" id="4_dg350"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_he1mw"]
 
-[node name="Aligator" instance=ExtResource("1_emfqa")]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ot1cs"]
+
+[node name="AligatorMen" instance=ExtResource("1_emfqa")]
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2(2, 0)
@@ -15,7 +18,46 @@ shape = SubResource("CircleShape2D_he1mw")
 position = Vector2(0, -22)
 texture = ExtResource("2_clb3e")
 
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(-33, -8)
+
 [node name="Label" parent="." index="4"]
-offset_top = -82.0
-offset_right = 21.0
-offset_bottom = -62.0
+offset_left = -53.0
+offset_top = -81.0
+offset_right = -12.0
+offset_bottom = -61.0
+
+[node name="Dialoge" parent="CanvasLayer" index="0"]
+max_texts = 10
+object_name = "Парень"
+text1 = "Что этот крокодил о себе думает?"
+object_name2 = "Парень"
+text2 = "Почему он просто стоит?"
+object_name3 = "Парень"
+text3 = "Эй, крокодил, чего ты там стоишь?"
+object_name4 = "Крокодил"
+text4 = "Я не крокодил, я аллигатор."
+object_name5 = "Парень"
+text5 = "А? А какая разница?"
+object_name6 = "Аллигатор"
+text6 = "Отвали."
+object_name7 = "Парень"
+text7 = "Мне не нравится, когда возле меня стоит крокодил."
+object_name8 = "Аллигатор"
+text8 = "Я не крокодил."
+object_name9 = "Парень"
+text9 = "Мне плевать, крокодил ты или аллигатор."
+object_name10 = "Парень"
+text10 = "Я всё равно не люблю крокодилов."
+
+[node name="Men" type="StaticBody2D" parent="." index="6"]
+position = Vector2(-72, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Men" index="0"]
+shape = SubResource("CapsuleShape2D_ot1cs")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Men" index="1"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Men" index="2"]
+position = Vector2(-1, -17)
+texture = ExtResource("4_dg350")

@@ -1,0 +1,88 @@
+[gd_scene load_steps=15 format=3 uid="uid://bd0kb082fjaos"]
+
+[ext_resource type="Texture2D" uid="uid://b0t1jwbrp424f" path="res://Textures/1_1.png" id="1_6cjrx"]
+[ext_resource type="PackedScene" uid="uid://0brdn6o5jaxv" path="res://scenes/character_body_2d.tscn" id="1_kw7aj"]
+[ext_resource type="PackedScene" uid="uid://08hx786k86bb" path="res://scenes/nps/boss.tscn" id="3_ef36o"]
+[ext_resource type="Texture2D" uid="uid://dp4e6pgxxdv4g" path="res://Textures/kenney-particle-pack-7e801dc538996622a91327bb1dd5879cf977aa09/addons/kenney_particle_pack/magic_05.png" id="4_rr6r4"]
+[ext_resource type="AudioStream" uid="uid://c8w1v1d38lou" path="res://Music/Place of lost souls.mp3" id="5_so1jw"]
+[ext_resource type="Texture2D" uid="uid://ycygqttlnfan" path="res://Textures/player/target1.png" id="6_uuy23"]
+[ext_resource type="Texture2D" uid="uid://dbworxmlowviw" path="res://Textures/player/target2.png" id="7_52laf"]
+[ext_resource type="Texture2D" uid="uid://cukaamgr2nmh3" path="res://Textures/player/target3.png" id="8_b8swj"]
+[ext_resource type="Texture2D" uid="uid://c6xwvfedov8mk" path="res://Textures/player/target4.png" id="9_wct2d"]
+[ext_resource type="Texture2D" uid="uid://vtj0q2vbse7l" path="res://Textures/light.png" id="10_oa8d8"]
+
+[sub_resource type="Curve" id="Curve_s5k0w"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_nc750"]
+curve = SubResource("Curve_s5k0w")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2yxmk"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(575, 325, 1)
+scale_min = 0.02
+scale_max = 0.03
+alpha_curve = SubResource("CurveTexture_nc750")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kh4lh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_uuy23")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_52laf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_b8swj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_wct2d")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="FinalScene" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0, 0, 0, 1)
+position = Vector2(588, 323)
+scale = Vector2(19.375, 11.0938)
+texture = ExtResource("1_6cjrx")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(577, 327)
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_2yxmk")
+texture = ExtResource("4_rr6r4")
+lifetime = 2.0
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_so1jw")
+volume_db = -11.243
+autoplay = true
+
+[node name="target" type="AnimatedSprite2D" parent="."]
+position = Vector2(574, 438)
+scale = Vector2(2.50672, 2.50672)
+sprite_frames = SubResource("SpriteFrames_kh4lh")
+autoplay = "default"
+
+[node name="PointLight2D" type="PointLight2D" parent="target"]
+energy = 0.07
+texture = ExtResource("10_oa8d8")
+texture_scale = 0.05
+
+[node name="Objects" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Player" parent="Objects" instance=ExtResource("1_kw7aj")]
+position = Vector2(575, 427)
+loc = "final"
+
+[node name="Boss" parent="Objects" instance=ExtResource("3_ef36o")]
+position = Vector2(584, 167)

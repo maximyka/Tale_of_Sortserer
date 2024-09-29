@@ -1,0 +1,54 @@
+[gd_scene load_steps=9 format=3 uid="uid://qodcaqsq5186"]
+
+[ext_resource type="Texture2D" uid="uid://duefwm8vpnaa2" path="res://Textures/Skills/Lemon/Lemon1.png" id="1_dg34m"]
+[ext_resource type="Texture2D" uid="uid://javn1ks7n4t" path="res://Textures/Skills/Lemon/Lemon2.png" id="2_46kgv"]
+[ext_resource type="Texture2D" uid="uid://dp06ppm5blh7u" path="res://Textures/Skills/Lemon/Lemon3.png" id="3_lpk5d"]
+[ext_resource type="Texture2D" uid="uid://qpl5b7s50ygh" path="res://Textures/Skills/Lemon/Lemon4.png" id="4_cvm62"]
+[ext_resource type="Texture2D" uid="uid://47suxfyrf571" path="res://Textures/Skills/Lemon/Lemon5.png" id="5_cfvyb"]
+[ext_resource type="Texture2D" uid="uid://bl5nc3k52rhas" path="res://Textures/Skills/Lemon/Lemon6.png" id="6_a5kym"]
+
+[sub_resource type="GDScript" id="GDScript_akc3r"]
+script/source = "extends Node2D
+
+
+
+func _on_animated_sprite_2d_animation_finished() -> void:
+	queue_free()
+"
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3cuqn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_dg34m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_46kgv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_lpk5d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_cvm62")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_cfvyb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_a5kym")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="Lemon" type="Node2D"]
+script = SubResource("GDScript_akc3r")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_3cuqn")
+autoplay = "default"
+frame = 5
+frame_progress = 1.0
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]

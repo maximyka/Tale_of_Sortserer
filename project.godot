@@ -10,10 +10,15 @@ config_version=5
 
 [application]
 
-config/name="Artifact Gam"
+config/name="Tale of Sortserer"
+config/version="1.0.0"
 run/main_scene="res://scenes/UI/cut_scene.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/show_image=false
+config/icon="res://Textures/Title.png"
+boot_splash/version=""
+boot_splash/icon=""
+boot_splash/name="Artifact Gam"
 
 [autoload]
 

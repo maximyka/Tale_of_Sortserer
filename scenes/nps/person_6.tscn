@@ -1,0 +1,51 @@
+[gd_scene load_steps=6 format=3 uid="uid://35l4cnk2v1nh"]
+
+[ext_resource type="PackedScene" uid="uid://bltitciucq725" path="res://scenes/nps/nps.tscn" id="1_w6aux"]
+[ext_resource type="Texture2D" uid="uid://cnc6rfqcl354c" path="res://Textures/tile/NPC_MaN.png" id="2_d6smg"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tv8vx"]
+radius = 18.0
+height = 52.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fmqcq"]
+texture = ExtResource("2_d6smg")
+1:0/size_in_atlas = Vector2i(8, 10)
+1:0/0 = 0
+10:0/size_in_atlas = Vector2i(8, 10)
+10:0/0 = 0
+20:0/size_in_atlas = Vector2i(9, 10)
+20:0/0 = 0
+22:11/size_in_atlas = Vector2i(8, 10)
+22:11/0 = 0
+11:11/size_in_atlas = Vector2i(8, 10)
+11:11/0 = 0
+0:11/size_in_atlas = Vector2i(9, 10)
+0:11/0 = 0
+1:22/size_in_atlas = Vector2i(9, 10)
+1:22/0 = 0
+19:22/size_in_atlas = Vector2i(8, 10)
+19:22/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_x3vdg"]
+sources/0 = SubResource("TileSetAtlasSource_fmqcq")
+
+[node name="Person6" instance=ExtResource("1_w6aux")]
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(3, 17)
+scale = Vector2(0.659928, 0.659928)
+shape = SubResource("CapsuleShape2D_tv8vx")
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+scale = Vector2(0.745109, 0.745109)
+
+[node name="Label" parent="." index="4"]
+offset_left = -15.0
+offset_top = -83.0
+offset_right = 26.0
+offset_bottom = -63.0
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." index="6"]
+scale = Vector2(0.629459, 0.629459)
+tile_map_data = PackedByteArray(0, 0, 0, 0, 255, 255, 0, 0, 22, 0, 11, 0, 0, 0)
+tile_set = SubResource("TileSet_x3vdg")

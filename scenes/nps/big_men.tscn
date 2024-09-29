@@ -8,8 +8,8 @@ radius = 9.0159
 height = 105.95
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lx8h7"]
-radius = 31.2391
-height = 133.655
+radius = 40.1427
+height = 151.616
 
 [node name="BigMen" instance=ExtResource("1_hdr0y")]
 

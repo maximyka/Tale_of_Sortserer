@@ -1,41 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://drp1lwppji6wc"]
+[gd_scene load_steps=5 format=3 uid="uid://drp1lwppji6wc"]
 
 [ext_resource type="PackedScene" uid="uid://cbbovkx5qmev0" path="res://scenes/Objects/object.tscn" id="1_0ww7b"]
 [ext_resource type="Texture2D" uid="uid://c1tsussp72mn1" path="res://Textures/Object/Camp_Fire.png" id="2_mevff"]
 [ext_resource type="Texture2D" uid="uid://vtj0q2vbse7l" path="res://Textures/light.png" id="3_v2waw"]
-[ext_resource type="PackedScene" uid="uid://tle4lijd0xvs" path="res://scenes/UI/dialoge.tscn" id="4_n4qrb"]
-
-[sub_resource type="GDScript" id="GDScript_xr24c"]
-script/source = "extends StaticBody2D
-
-var ready_to_space = false
-
-func _ready() -> void:
-	$CanvasLayer.visible = false
-	$Label.visible = false
-
-func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed(\"ui_accept\") and ready_to_space:
-		$CanvasLayer.visible = [true, false][int($CanvasLayer.visible)]
-		$CanvasLayer/Dialoge.count_texts = 0
-
-func _on_area_2d_body_entered(_body: Node2D) -> void:
-	ready_to_space = true
-	$Label.visible = true
-func _on_area_2d_body_exited(_body: Node2D) -> void:
-	$CanvasLayer/Dialoge.count_texts = 0
-	ready_to_space = false
-	$Label.visible = false
-"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pawuq"]
 size = Vector2(22, 19)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_4a8aa"]
-radius = 60.208
-
 [node name="CampFire" instance=ExtResource("1_0ww7b")]
-script = SubResource("GDScript_xr24c")
 
 [node name="CollisionShape2D" parent="." index="0"]
 position = Vector2(-4, 12.5)
@@ -49,28 +21,3 @@ color = Color(1, 0.870588, 0.576471, 1)
 energy = 0.9
 texture = ExtResource("3_v2waw")
 texture_scale = 1.2
-
-[node name="Area2D" type="Area2D" parent="." index="3"]
-collision_layer = 0
-collision_mask = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
-shape = SubResource("CircleShape2D_4a8aa")
-
-[node name="Label" type="Label" parent="." index="4"]
-visible = false
-offset_left = -20.0
-offset_top = -65.0
-offset_right = 21.0
-offset_bottom = -45.0
-text = "Space"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." index="5"]
-visible = false
-
-[node name="Dialoge" parent="CanvasLayer" index="0" instance=ExtResource("4_n4qrb")]
-
-[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://be4jihxrvtv58"
+path="res://.godot/imported/some kind of a clownade (1).mp3-2397e8b9450441a64a0ccb59e6847377.mp3str"
+
+[deps]
+
+source_file="res://Music/some kind of a clownade (1).mp3"
+dest_files=["res://.godot/imported/some kind of a clownade (1).mp3-2397e8b9450441a64a0ccb59e6847377.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,7 +1,8 @@
-[gd_scene load_steps=40 format=3 uid="uid://0brdn6o5jaxv"]
+[gd_scene load_steps=57 format=3 uid="uid://0brdn6o5jaxv"]
 
 [ext_resource type="Script" path="res://scenes/character_body_2d.gd" id="1_4kowe"]
 [ext_resource type="Texture2D" uid="uid://r7vjcefly762" path="res://Textures/UI/E.png" id="3_r0gam"]
+[ext_resource type="Texture2D" uid="uid://c1wkn3iaop6wu" path="res://Textures/kenney-particle-pack-7e801dc538996622a91327bb1dd5879cf977aa09/addons/kenney_particle_pack/fire_01.png" id="3_ywa0e"]
 [ext_resource type="Texture2D" uid="uid://b6qx2hc3pwesj" path="res://Textures/UI/Q.png" id="4_3syo0"]
 [ext_resource type="Texture2D" uid="uid://dr1j8hdecbx5y" path="res://Textures/UI/R.png" id="5_rte8w"]
 [ext_resource type="Texture2D" uid="uid://b067ds4nmpfgp" path="res://Textures/UI/W.png" id="6_gig38"]
@@ -24,18 +25,70 @@
 [ext_resource type="Texture2D" uid="uid://dhhe25f2csuwi" path="res://Textures/Hmmm/Hmmmm9.png" id="16_6omv1"]
 [ext_resource type="Texture2D" uid="uid://xd6tvanpm5np" path="res://Player/Player_Idle20.png" id="16_8hcy7"]
 [ext_resource type="Texture2D" uid="uid://bchnrgy105x7x" path="res://Textures/Hmmm/Hmmmm10.png" id="17_0hsy4"]
+[ext_resource type="Texture2D" uid="uid://d0fvuwqch8qh7" path="res://Textures/UI/Menu.png" id="17_1fdnf"]
+[ext_resource type="Texture2D" uid="uid://dus50o5x30cxx" path="res://Textures/UI/Prodolgit.png" id="17_86uep"]
 [ext_resource type="Texture2D" uid="uid://6opb0y20s5wm" path="res://Player/Player_Idle21.png" id="17_lmpa8"]
 [ext_resource type="Texture2D" uid="uid://dy5nfgmhh757t" path="res://Player/Player_Idle22.png" id="18_7dvpa"]
+[ext_resource type="Texture2D" uid="uid://bhoh613t2apgw" path="res://Textures/UI/ВЫйти.png" id="18_fg4ic"]
 [ext_resource type="Texture2D" uid="uid://dko3kpk8110om" path="res://Textures/Player_Move/Player_Movement1.png" id="19_88gk8"]
+[ext_resource type="Texture2D" uid="uid://c5plotxhyaibj" path="res://Textures/UI/Sound.png" id="19_rqjap"]
+[ext_resource type="Texture2D" uid="uid://dd7a0mxiah57k" path="res://Textures/UI/Sound_end.png" id="20_30cqb"]
 [ext_resource type="Texture2D" uid="uid://828iklnuefvb" path="res://Textures/Player_Move/Player_Movement2.png" id="20_fqcvf"]
+[ext_resource type="Texture2D" uid="uid://cmaa26qdfnxdf" path="res://Textures/Object/Stone1.png" id="21_ltvff"]
 [ext_resource type="Texture2D" uid="uid://ccei6jrvs28c4" path="res://Textures/Player_Move/Player_Movement3.png" id="21_m1c0i"]
 [ext_resource type="Texture2D" uid="uid://bbe36vpnty3bo" path="res://Textures/Player_Move/Player_Movement4.png" id="22_nd1oe"]
+[ext_resource type="Texture2D" uid="uid://d2nmm882c1wh3" path="res://Textures/UI/Menu2.png" id="22_ung1l"]
 [ext_resource type="Texture2D" uid="uid://by1pskif26om2" path="res://Textures/Player_Move/Player_Movement5.png" id="23_sd3np"]
 [ext_resource type="Texture2D" uid="uid://dtx22bia0p0ag" path="res://Textures/Player_Move/Player_Movement6.png" id="24_lg7m8"]
 [ext_resource type="Texture2D" uid="uid://ed8yghw1wdus" path="res://Textures/Player_Move/Player_Movement7.png" id="25_4b8yv"]
 [ext_resource type="Texture2D" uid="uid://calakn01trku3" path="res://Textures/Player_Move/Player_Movement8.png" id="26_u2n3h"]
 [ext_resource type="Texture2D" uid="uid://v1j5pda26cbt" path="res://Textures/Player_Move/Player_Movement9.png" id="27_dsrke"]
 [ext_resource type="Texture2D" uid="uid://vtj0q2vbse7l" path="res://Textures/light.png" id="29_7qf1l"]
+
+[sub_resource type="GDScript" id="GDScript_a77ux"]
+script/source = "extends CanvasLayer
+
+func _ready() -> void:
+	$AnimationPlayer.play(\"a\")
+
+func _process(delta: float) -> void:
+	match Global.stones:
+		0:
+			$Stone1.visible = false
+			$Stone2.visible = false
+			$Stone1Black.visible = true
+			$Stone2Black.visible = true
+		1:
+			$Stone1.visible = true
+			$Stone2.visible = false
+			$Stone1Black.visible = false
+			$Stone2Black.visible = true
+			
+		2:
+			$Stone1.visible = true
+			$Stone2.visible = true
+			$Stone1Black.visible = false
+			$Stone2Black.visible = false
+"
+
+[sub_resource type="Curve" id="Curve_2a22u"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.790698, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_il11p"]
+curve = SubResource("Curve_2a22u")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_j01e0"]
+particle_flag_disable_z = true
+direction = Vector3(0, 0, 0)
+spread = 180.0
+initial_velocity_min = 81.73
+initial_velocity_max = 125.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.2
+scale_max = 0.2
+alpha_curve = SubResource("CurveTexture_il11p")
+turbulence_enabled = true
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4bgan"]
 animations = [{
@@ -74,6 +127,98 @@ animations = [{
 "name": &"react",
 "speed": 8.0
 }]
+
+[sub_resource type="GDScript" id="GDScript_l5ca7"]
+script/source = "extends Control
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed('ui_cancel'):
+		visible = [true, false][int(visible)]
+
+func _ready() -> void:
+	visible = false
+
+func _on_texture_button_4_toggled(toggled_on: bool) -> void:
+	AudioServer.set_bus_mute(0, toggled_on)
+
+func _on_continue_pressed() -> void:
+	visible = false
+"
+
+[sub_resource type="GDScript" id="GDScript_6wrgn"]
+script/source = "extends Control
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="Animation" id="Animation_x12xs"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Stone1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(277, 232)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Stone2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(185, 579)]
+}
+
+[sub_resource type="Animation" id="Animation_wbbrb"]
+resource_name = "a"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Stone1:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(65, 579), Vector2(65, 555.745)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Stone2:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(185, 579), Vector2(185, 555.745)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wesrr"]
+_data = {
+"RESET": SubResource("Animation_x12xs"),
+"a": SubResource("Animation_wbbrb")
+}
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_xl0kc"]
 animations = [{
@@ -165,6 +310,7 @@ limit_right = 1350
 limit_bottom = 650
 
 [node name="UI" type="CanvasLayer" parent="."]
+script = SubResource("GDScript_a77ux")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI"]
 anchors_preset = 7
@@ -184,22 +330,227 @@ scale = Vector2(4.12381, 4.12381)
 layout_mode = 2
 texture = ExtResource("4_3syo0")
 
+[node name="GPUParticles2D" type="GPUParticles2D" parent="UI/HBoxContainer/q"]
+modulate = Color(0.858824, 0.772549, 1, 1)
+position = Vector2(11.6397, 16.7321)
+scale = Vector2(0.596141, 0.596141)
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_j01e0")
+texture = ExtResource("3_ywa0e")
+lifetime = 0.26
+one_shot = true
+interpolate = false
+fract_delta = false
+draw_order = 0
+trail_lifetime = 0.31
+trail_sections = 2
+trail_section_subdivisions = 1
+
 [node name="w" type="TextureRect" parent="UI/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("6_gig38")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="UI/HBoxContainer/w"]
+modulate = Color(0.858824, 0.772549, 1, 1)
+position = Vector2(16.6813, 18.9145)
+scale = Vector2(0.596141, 0.596141)
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_j01e0")
+texture = ExtResource("3_ywa0e")
+lifetime = 0.26
+one_shot = true
+interpolate = false
+fract_delta = false
+draw_order = 0
+trail_lifetime = 0.31
+trail_sections = 2
+trail_section_subdivisions = 1
 
 [node name="e" type="TextureRect" parent="UI/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("3_r0gam")
 
+[node name="GPUParticles2D" type="GPUParticles2D" parent="UI/HBoxContainer/e"]
+modulate = Color(0.858824, 0.772549, 1, 1)
+position = Vector2(16.1455, 17.9446)
+scale = Vector2(0.596141, 0.596141)
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_j01e0")
+texture = ExtResource("3_ywa0e")
+lifetime = 0.26
+one_shot = true
+interpolate = false
+fract_delta = false
+draw_order = 0
+trail_lifetime = 0.31
+trail_sections = 2
+trail_section_subdivisions = 1
+
 [node name="r" type="TextureRect" parent="UI/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("5_rte8w")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="UI/HBoxContainer/r"]
+modulate = Color(0.858824, 0.772549, 1, 1)
+position = Vector2(15.3672, 16.7321)
+scale = Vector2(0.596141, 0.596141)
+emitting = false
+process_material = SubResource("ParticleProcessMaterial_j01e0")
+texture = ExtResource("3_ywa0e")
+lifetime = 0.26
+one_shot = true
+interpolate = false
+fract_delta = false
+draw_order = 0
+trail_lifetime = 0.31
+trail_sections = 2
+trail_section_subdivisions = 1
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="UI"]
 sprite_frames = SubResource("SpriteFrames_4bgan")
 animation = &"react"
 centered = false
+
+[node name="Settings" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -248.0
+offset_top = -156.0
+offset_right = 248.0
+offset_bottom = 156.0
+grow_horizontal = 2
+grow_vertical = 2
+script = SubResource("GDScript_l5ca7")
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/Settings"]
+texture = ExtResource("17_1fdnf")
+centered = false
+
+[node name="Continue" type="TextureButton" parent="UI/Settings"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -125.0
+offset_top = 74.0
+offset_right = 125.0
+offset_bottom = 124.0
+grow_horizontal = 2
+texture_normal = ExtResource("17_86uep")
+
+[node name="Exit" type="TextureButton" parent="UI/Settings"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -125.0
+offset_top = 166.0
+offset_right = 125.0
+offset_bottom = 216.0
+grow_horizontal = 2
+texture_normal = ExtResource("18_fg4ic")
+
+[node name="TextureButton4" type="TextureButton" parent="UI/Settings"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 193.0
+offset_right = 47.0
+offset_bottom = 233.0
+scale = Vector2(2.53665, 2.53665)
+toggle_mode = true
+texture_normal = ExtResource("19_rqjap")
+texture_pressed = ExtResource("20_30cqb")
+stretch_mode = 0
+
+[node name="Panel" type="Control" parent="UI/Settings"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 14.0
+offset_top = -125.0
+offset_right = 264.0
+offset_bottom = 125.0
+grow_horizontal = 0
+grow_vertical = 2
+script = SubResource("GDScript_6wrgn")
+
+[node name="Sprite2D" type="Sprite2D" parent="UI/Settings/Panel"]
+texture = ExtResource("22_ung1l")
+centered = false
+
+[node name="Label" type="Label" parent="UI/Settings/Panel"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 24.0
+offset_top = -67.0
+offset_right = 148.0
+offset_bottom = 68.0
+grow_vertical = 2
+text = "Лимонная долька
+Смена цвета
+Бананавая кожура
+Фейрверк
+Фонарь
+Мелодия"
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="UI/Settings/Panel"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -67.0
+offset_right = -26.0
+offset_bottom = 68.0
+grow_horizontal = 0
+grow_vertical = 2
+text = "qqrr
+wrrw
+qwer
+qrqr
+eeqq
+erre"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Stone1" type="Sprite2D" parent="UI"]
+position = Vector2(277, 232)
+scale = Vector2(2, 2)
+texture = ExtResource("21_ltvff")
+
+[node name="Stone1Black" type="Sprite2D" parent="UI"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(65, 579)
+scale = Vector2(2, 2)
+texture = ExtResource("21_ltvff")
+
+[node name="Stone2" type="Sprite2D" parent="UI"]
+position = Vector2(185, 579)
+scale = Vector2(2, 2)
+texture = ExtResource("21_ltvff")
+
+[node name="Stone2Black" type="Sprite2D" parent="UI"]
+modulate = Color(0, 0, 0, 1)
+position = Vector2(185, 579)
+scale = Vector2(2, 2)
+texture = ExtResource("21_ltvff")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI"]
+libraries = {
+"": SubResource("AnimationLibrary_wesrr")
+}
 
 [node name="Player" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_xl0kc")
@@ -215,4 +566,22 @@ energy = 0.15
 texture = ExtResource("29_7qf1l")
 texture_scale = 0.3
 
+[node name="Lighting" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="Color" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true
+
+[node name="Music" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
 [connection signal="animation_finished" from="UI/AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="pressed" from="UI/Settings/Continue" to="UI/Settings" method="_on_continue_pressed"]
+[connection signal="pressed" from="UI/Settings/Exit" to="." method="_on_exit_pressed"]
+[connection signal="toggled" from="UI/Settings/TextureButton4" to="UI/Settings" method="_on_texture_button_4_toggled"]
+[connection signal="timeout" from="Lighting" to="." method="_on_lighting_timeout"]
+[connection signal="timeout" from="Color" to="." method="_on_color_timeout"]
+[connection signal="timeout" from="Music" to="." method="_on_music_timeout"]

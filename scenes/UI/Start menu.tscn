@@ -61,6 +61,22 @@ texture_normal = ExtResource("5_6nrqe")
 stream = ExtResource("6_r72rt")
 volume_db = -8.432
 autoplay = true
+parameters/looping = true
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 828.0
+offset_top = 564.0
+offset_right = 1128.0
+offset_bottom = 623.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 46
+text = "Вы прошли игру"
 
 [connection signal="pressed" from="Panel/Start" to="." method="Start_button"]
 [connection signal="pressed" from="Panel/Credits" to="." method="_on_credits_pressed"]

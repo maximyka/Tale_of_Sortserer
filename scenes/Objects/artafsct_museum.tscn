@@ -43,8 +43,8 @@ visible = false
 
 [node name="Dialoge" parent="CanvasLayer" index="0" instance=ExtResource("3_v0b36")]
 max_texts = 1
-object_name = "Экспанат"
-text1 = "Привет"
+object_name = "Пончик"
+text1 = "Единственная еда в мире, которую не стал есть Боб."
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

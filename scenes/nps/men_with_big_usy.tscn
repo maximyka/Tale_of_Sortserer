@@ -1,27 +1,327 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1ce86b54ujuq"]
+[gd_scene load_steps=11 format=3 uid="uid://cpc4sf610lxps"]
 
-[ext_resource type="PackedScene" uid="uid://bltitciucq725" path="res://scenes/nps/nps.tscn" id="1_2rqoo"]
-[ext_resource type="Texture2D" uid="uid://bakhbfxix107d" path="res://Textures/NPC/Men_with_big_usy.png" id="2_aorre"]
+[ext_resource type="Texture2D" uid="uid://osrw83568sef" path="res://Textures/NPC/Clown.png" id="1_dkayy"]
+[ext_resource type="PackedScene" uid="uid://tle4lijd0xvs" path="res://scenes/UI/dialoge.tscn" id="2_7e18m"]
+[ext_resource type="Texture2D" uid="uid://cmaa26qdfnxdf" path="res://Textures/Object/Stone1.png" id="3_bjbfm"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_utjxr"]
+[sub_resource type="GDScript" id="GDScript_epwes"]
+script/source = "extends StaticBody2D
+
+var ready_to_space = false
+
+func _ready() -> void:
+	$CanvasLayer.visible = false
+	$Label.visible = false
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed(\"ui_accept\") and ready_to_space:
+		$CanvasLayer.visible = [true, false][int($CanvasLayer.visible)]
+		$CanvasLayer/Dialoge.count_texts = 0
+
+func _on_area_2d_body_entered(_body: Node2D) -> void:
+	ready_to_space = true
+	$Label.visible = true
+
+func _on_area_2d_body_exited(_body: Node2D) -> void:
+	$CanvasLayer/Dialoge.count_texts = 0
+	ready_to_space = false
+	$Label.visible = false
+"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nvi7p"]
 radius = 7.0
 height = 20.0
 
-[node name="MenWithBigUsy" instance=ExtResource("1_2rqoo")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_njcud"]
+radius = 124.004
 
-[node name="CollisionShape2D" parent="." index="0"]
+[sub_resource type="GDScript" id="GDScript_rds2j"]
+script/source = "extends Control
+
+@onready var animation_player: AnimationPlayer = $Panel/AnimationPlayer
+var count_texts = 0
+@export var max_texts = 10
+
+@export var object_name = ''
+@export var text1 = ''
+@export var text2 = ''
+@export var text3 = ''
+@export var text4 = ''
+@export var text5 = ''
+@export var text6 = ''
+var text7 = ''
+var text8 = ''
+var text9 = ''
+var text10 = ''
+var text11 = ''
+var text12 = ''
+var text13 = ''
+var text14 = ''
+var text15 = ''
+var text16 = ''
+var text17 = ''
+var text18 = ''
+var text19 = ''
+var text20 = ''
+var text21 = ''
+var text22 = ''
+var text23 = ''
+var text24 = ''
+var text25 = ''
+var text26 = ''
+var text27 = ''
+var text28 = ''
+var text29 = ''
+
+func _ready() -> void:
+	new_text()
+	$Panel/Label.text = object_name
+
+func _process(delta: float) -> void:
+	if Input.is_anything_pressed() and !animation_player.is_playing() and get_parent().visible:
+		new_text()
+		if count_texts == max_texts:
+			get_parent().visible = false
+			count_texts = 0
+			if Global.count_talk == 0:
+				Global.count_talk = 1
+			elif Global.count_talk == 1:
+				Global.count_talk = 2
+		
+		match count_texts:
+			0:
+				$Panel/RichTextLabel.text = text1
+				animation_player.play('a')
+			1:
+				$Panel/RichTextLabel.text = text2
+				animation_player.play('a')
+			2:
+				$Panel/RichTextLabel.text = text3
+				animation_player.play('a')
+			3:
+				$Panel/RichTextLabel.text = text4
+				animation_player.play('a')
+				if Global.count_talk == 3:
+					Global.stones += 1
+			4:
+				$Panel/RichTextLabel.text = text5
+				animation_player.play('a')
+			5:
+				$Panel/RichTextLabel.text = text6
+				animation_player.play('a')
+			6:
+				$Panel/RichTextLabel.text = text7
+				animation_player.play('a')
+			7:
+				$Panel/RichTextLabel.text = text8
+				animation_player.play('a')
+			8:
+				$Panel/RichTextLabel.text = text9
+				animation_player.play('a')
+				$\"../AnimationPlayer\".play(\"a\")
+				$\"../Sprite2D2\".visible = true
+			9:
+				$Panel/RichTextLabel.text = text10
+				animation_player.play('a')
+			10:
+				$Panel/RichTextLabel.text = text11
+				animation_player.play('a')
+			11:
+				$Panel/RichTextLabel.text = text12
+				animation_player.play('a')
+			12:
+				$Panel/RichTextLabel.text = text13
+				animation_player.play('a')
+			13:
+				$Panel/RichTextLabel.text = text14
+				animation_player.play('a')
+			14:
+				$Panel/RichTextLabel.text = text15
+				animation_player.play('a')
+			15:
+				$Panel/RichTextLabel.text = text16
+				animation_player.play('a')
+			16:
+				$Panel/RichTextLabel.text = text17
+				animation_player.play('a')
+			17:
+				$Panel/RichTextLabel.text = text18
+				animation_player.play('a')
+			18:
+				$Panel/RichTextLabel.text = text19
+				animation_player.play('a')
+			19:
+				$Panel/RichTextLabel.text = text20
+				animation_player.play('a')
+			20:
+				$Panel/RichTextLabel.text = text21
+				animation_player.play('a')
+			21:
+				$Panel/RichTextLabel.text = text22
+				animation_player.play('a')
+			22:
+				$Panel/RichTextLabel.text = text23
+				animation_player.play('a')
+			23:
+				$Panel/RichTextLabel.text = text24
+				animation_player.play('a')
+			24:
+				$Panel/RichTextLabel.text = text25
+				animation_player.play('a')
+			25:
+				$Panel/RichTextLabel.text = text26
+				animation_player.play('a')
+			26:
+				$Panel/RichTextLabel.text = text27
+				animation_player.play('a')
+			27:
+				$Panel/RichTextLabel.text = text28
+				animation_player.play('a')
+			28:
+				$Panel/RichTextLabel.text = text29
+				animation_player.play('a')
+				$\"../Sprite2D2\".visible = false
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	count_texts += 1
+
+func new_text():
+	match Global.count_talk:
+		1:
+			max_texts = 29
+			text1 = 'Приветствую, путник! Не видел тебя здесь раньше. Новенький?'
+			text2 = 'В таком случае добро пожаловать в наш цирк!'
+			text3 = 'Самое весёлое место в городе!'
+			text4 = 'Правда, сейчас что-то совсем не весело...'
+			text5 = 'Дай угадаю, ищешь своё тело?'
+			text6 = 'Не спрашивай, откуда я знаю, я просто знаю.'
+			text7 = 'Я могу тебе помочь!'
+			text8 = 'Видишь ли, чтобы вернуть тело, тебе нужны...'
+			text9 = 'Камни! Да-да, камни.'
+			text10 = 'Вот, смотри. Это не обычный камень, он волшебный.'
+			text11 = 'АРТЕФАКТ!'
+			text12 = 'Выглядит как обычный? Ну... Это маскировка.'
+			text13 = 'Чтобы злые силы его не забрали.'
+			text14 = 'Но я не отдам его тебе так просто.'
+			text15 = 'Для начала тебе стоит кое-что для меня сделать.'
+			text16 = 'Видишь ли, мы тут испытываем небольшие трудности.'
+			text17 = 'Видел нашего слона? А когда-нибудь видел НАСТОЯЩИХ слонов?'
+			text18 = 'Вот-вот, ты понимаешь.'
+			text19 = 'Настоящий слон обиделся и убежал, поэтому мы срочно нашли ему замену в виде свиней.'
+			text20 = 'МНОЖЕСТВА свиней.'
+			text21 = 'Но когда-нибудь люди догадаются, да и, если честно, я скучаю по слону...'
+			text22 = 'Найди его и приведи обратно, и тогда я отдам тебе камень.'
+			text23 = 'Иди по следам и выйдешь к месту, где он прячется.'
+			text24 = 'Мы бы и сами за ним сходили, но он убежал в лес, а в лесу темно и страшно.'
+			text25 = 'Было бы чем посветить...'
+			text26 = 'Ах, да, учитывай, что слон очень пугливый. Не осуждай его, у него тонкая и нежная душа.'
+			text27 = 'Поэтому тебе нужно будет как-нибудь его успокоить.'
+			text28 = 'Например, он любит музыку. Но оркестра у нас нет, поэтому ничем не могу тебе помочь.'
+			text29 = 'Но ты же волшебник, придумаешь что-нибудь.'
+		2:
+			max_texts = 2
+			text1 = 'Найди слона.'
+			text2 = 'Он оставил следы!'
+		3:
+			max_texts = 4
+			text1 = 'О, посмотрите-ка!'
+			text2 = 'Это же слон, мой любимый слон!'
+			text3 = 'Спасибо тебе, незнакомец!'
+			text4 = 'На, держи свой камень.'
+"
+
+[sub_resource type="Animation" id="Animation_fb062"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(277, 232)]
+}
+
+[sub_resource type="Animation" id="Animation_gcigx"]
+resource_name = "a"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D2:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(277, 232), Vector2(277, 144.925)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x1fn8"]
+_data = {
+"RESET": SubResource("Animation_fb062"),
+"a": SubResource("Animation_gcigx")
+}
+
+[node name="MenWithUs" type="StaticBody2D"]
+script = SubResource("GDScript_epwes")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
-shape = SubResource("CapsuleShape2D_utjxr")
+shape = SubResource("CapsuleShape2D_nvi7p")
 
-[node name="Sprite2D" parent="." index="2"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(3, -22)
-texture = ExtResource("2_aorre")
+texture = ExtResource("1_dkayy")
 
-[node name="CollisionShape2D" parent="Area2D" index="0"]
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-1, -11)
+shape = SubResource("CircleShape2D_njcud")
 
-[node name="Label" parent="." index="4"]
+[node name="Label" type="Label" parent="."]
 offset_left = -19.0
 offset_top = -71.0
 offset_right = 22.0
 offset_bottom = -51.0
+text = "Space"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Dialoge" parent="CanvasLayer" instance=ExtResource("2_7e18m")]
+script = SubResource("GDScript_rds2j")
+max_texts = 6
+object_name = "Веселый клоун"
+text1 = "Представляем вам наше ПРЕДСТАВЛЕНИЕ!"
+text2 = "Самый сильный человек в мире!"
+text3 = "Самый толстый человек в мире!"
+text4 = "Специальный гость - самый лживый человек в мире!"
+text5 = "Он сказал, что уже вышел из дома и будет совсем скоро!"
+text6 = "А пока посмотрите на нашего слона!"
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(277, 232)
+scale = Vector2(6, 6)
+texture = ExtResource("3_bjbfm")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
+libraries = {
+"": SubResource("AnimationLibrary_x1fn8")
+}
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

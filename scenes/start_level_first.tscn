@@ -91,7 +91,7 @@ radius = 70.0071
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_nc750"]
+[sub_resource type="CurveTexture" id="CurveTexture_7poiw"]
 curve = SubResource("Curve_dcdcu")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_jpk5t"]
@@ -100,7 +100,7 @@ emission_shape = 3
 emission_box_extents = Vector3(575, 325, 1)
 scale_min = 0.02
 scale_max = 0.03
-alpha_curve = SubResource("CurveTexture_nc750")
+alpha_curve = SubResource("CurveTexture_7poiw")
 
 [node name="StartLevelFirst" type="Node2D"]
 
@@ -135,11 +135,22 @@ vertical_alignment = 1
 visible = false
 
 [node name="Dialoge" parent="Stone/CanvasLayer" instance=ExtResource("3_pbj3o")]
-max_texts = 3
 object_name = "Камень"
-text1 = "Хм"
-text2 = "Хммм"
-text3 = "Хмммммммм"
+text1 = "..."
+object_name2 = "Камень"
+text2 = "..."
+object_name3 = "Камень"
+text3 = "..."
+object_name4 = "Камень"
+text4 = "Чего ты от меня ждёшь, я же просто камень."
+object_name5 = "Камень"
+text5 = "..."
+object_name6 = "Камень"
+text6 = "Ладно, всё, сдаюсь. Я не обычный камень, я встречаю новеньких."
+object_name7 = "Камень"
+text7 = "Ты в чистилище. Смирись. Судьба злодейка."
+object_name8 = "Камень"
+text8 = "Ну, всё, давай... Иди вон в ту дверь."
 
 [node name="target" type="AnimatedSprite2D" parent="."]
 position = Vector2(580, 433)

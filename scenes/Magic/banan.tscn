@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://7pytxp3vj5lb"]
+
+[ext_resource type="Texture2D" uid="uid://rrc65kqeagvp" path="res://Textures/Skills/Banana.png" id="1_ba4wi"]
+
+[sub_resource type="GDScript" id="GDScript_7qe0d"]
+script/source = "extends Sprite2D
+
+
+func _ready() -> void:
+	await get_tree().create_timer(5)
+	var tween = get_tree().create_tween()
+	tween.tween_property(self, 'modulate:a', 0, 5)
+	await tween.finished
+	queue_free()
+"
+
+[node name="Banan" type="Sprite2D"]
+texture = ExtResource("1_ba4wi")
+script = SubResource("GDScript_7qe0d")

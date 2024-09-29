@@ -16,10 +16,26 @@ position = Vector2(219, -4)
 texture = ExtResource("2_kvc0i")
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
-position = Vector2(0, -24)
+position = Vector2(3, -1)
+scale = Vector2(0.702821, 0.702821)
 
 [node name="Label" parent="." index="4"]
 visible = false
 offset_left = -21.0
 offset_top = -98.0
 offset_bottom = -78.0
+
+[node name="Dialoge" parent="CanvasLayer" index="0"]
+max_texts = 6
+object_name = "Огромный башмак"
+text1 = "В чём смысл моей жизни?"
+object_name2 = "Огромный башмак"
+text2 = "Я не смогу найти вторую половинку."
+object_name3 = "Огромный башмак"
+text3 = "Я даже не знаю, правый я или левый."
+object_name4 = "Огромный башмак"
+text4 = "И кажется, во мне дыра."
+object_name5 = "Огромный башмак"
+text5 = "У тебя есть заплатка?"
+object_name6 = "Огромный башмак"
+text6 = "Залатай мне душу. И пятку, вон там."

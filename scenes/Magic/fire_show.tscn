@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://g4fc4wvcireq"]
+
+[ext_resource type="Texture2D" uid="uid://b40k6b4up7ous" path="res://Textures/Skills/Firework/Firework1.png" id="1_y4sjj"]
+[ext_resource type="Texture2D" uid="uid://coh1g4e7r4n8s" path="res://Textures/Skills/Firework/Firework2.png" id="2_xj5sa"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ib2em"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_y4sjj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_xj5sa")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_iqej2"]
+script/source = "extends AnimatedSprite2D
+
+func _physics_process(delta: float) -> void:
+	position.y -= 300*delta
+	if position.y < -1000:
+		queue_free()
+"
+
+[node name="FireShow" type="Node2D"]
+
+[node name="FireShow" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_ib2em")
+autoplay = "default"
+frame_progress = 0.421232
+script = SubResource("GDScript_iqej2")

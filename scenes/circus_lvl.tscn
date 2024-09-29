@@ -1,13 +1,81 @@
-[gd_scene load_steps=12 format=3 uid="uid://bktcjidj2rxpr"]
+[gd_scene load_steps=34 format=4 uid="uid://bktcjidj2rxpr"]
 
 [ext_resource type="Texture2D" uid="uid://b0t1jwbrp424f" path="res://Textures/1_1.png" id="1_1f45b"]
 [ext_resource type="PackedScene" uid="uid://0brdn6o5jaxv" path="res://scenes/character_body_2d.tscn" id="1_tt0pq"]
 [ext_resource type="Texture2D" uid="uid://ycygqttlnfan" path="res://Textures/player/target1.png" id="2_5os3y"]
+[ext_resource type="Texture2D" uid="uid://b7xvntuspr4ip" path="res://Textures/tile/Scene.png" id="2_a023j"]
 [ext_resource type="Texture2D" uid="uid://dbworxmlowviw" path="res://Textures/player/target2.png" id="3_0puye"]
 [ext_resource type="Texture2D" uid="uid://cukaamgr2nmh3" path="res://Textures/player/target3.png" id="4_0jfmt"]
 [ext_resource type="Texture2D" uid="uid://c6xwvfedov8mk" path="res://Textures/player/target4.png" id="5_i3e3k"]
 [ext_resource type="Texture2D" uid="uid://vtj0q2vbse7l" path="res://Textures/light.png" id="6_setim"]
+[ext_resource type="PackedScene" uid="uid://cpc4sf610lxps" path="res://scenes/nps/men_with_big_usy.tscn" id="7_mcv52"]
+[ext_resource type="PackedScene" uid="uid://cdagvwtn68s0c" path="res://scenes/nps/person_8.tscn" id="8_5toid"]
 [ext_resource type="PackedScene" uid="uid://tle4lijd0xvs" path="res://scenes/UI/dialoge.tscn" id="8_mytt2"]
+[ext_resource type="Texture2D" uid="uid://bktjjaiy38ifj" path="res://Textures/tile/Circus1.png" id="9_dksgv"]
+[ext_resource type="PackedScene" uid="uid://ck7y73s1nh3hd" path="res://scenes/nps/person_1.tscn" id="9_gwvlh"]
+[ext_resource type="AudioStream" uid="uid://be4jihxrvtv58" path="res://Music/some kind of a clownade (1).mp3" id="10_5kbik"]
+[ext_resource type="PackedScene" uid="uid://cumdq3cu4oihm" path="res://scenes/nps/big_men.tscn" id="11_k732b"]
+[ext_resource type="Texture2D" uid="uid://4au5ufkqqxtj" path="res://Textures/tile/Circus2.png" id="11_pu4od"]
+[ext_resource type="PackedScene" uid="uid://drrbv83fakc63" path="res://scenes/Objects/girlyand_1v.tscn" id="14_k4qh7"]
+[ext_resource type="Texture2D" uid="uid://yarr82gj8ykh" path="res://Textures/Object/Table.png" id="16_v46c7"]
+[ext_resource type="Texture2D" uid="uid://cnc6rfqcl354c" path="res://Textures/tile/NPC_MaN.png" id="20_6rcnw"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y3pqr"]
+texture = ExtResource("2_a023j")
+0:0/size_in_atlas = Vector2i(3, 6)
+0:0/0 = 0
+4:2/size_in_atlas = Vector2i(2, 2)
+4:2/0 = 0
+4:6/size_in_atlas = Vector2i(4, 2)
+4:6/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_jkphf"]
+sources/0 = SubResource("TileSetAtlasSource_y3pqr")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_b5rfu"]
+texture = ExtResource("9_dksgv")
+1:0/size_in_atlas = Vector2i(7, 8)
+1:0/0 = 0
+1:0/0/y_sort_origin = 20
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(46.233, 54.7653, 2.57953, 54.3685, -44.6457, 47.2252, -54.9638, 39.2882, -48.2173, 28.5732, -24.4063, 28.1764, -8, -1.98425, 25.2, -2.3811)
+11:1/size_in_atlas = Vector2i(8, 5)
+11:1/0 = 0
+11:1/0/y_sort_origin = 15
+11:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-40.6771, 26.1921, 12.5008, 25.7953, 20.4378, 13.4929, -32.3433, 12.6992)
+21:1/size_in_atlas = Vector2i(4, 4)
+21:1/0 = 0
+21:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(4.96062, 23.811, -6.94488, 23.4142, -15.2787, 12.3024, 8, 8, 27.1842, 12.3024, 18.8504, 22.2236)
+27:5/size_in_atlas = Vector2i(5, 7)
+27:5/0 = 0
+27:5/0/y_sort_origin = 15
+27:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-29.3449, 33.234, -1.76777, 42.4264, 23.6881, 34.6482, 23.6881, 23.3345, -2.47488, 15.5564, -27.9307, 18.3848)
+10:8/size_in_atlas = Vector2i(12, 4)
+10:8/0 = 0
+10:8/0/y_sort_origin = -5
+10:8/0/physics_layer_0/polygon_0/points = PackedVector2Array(-22.2739, 142.836, 30.052, 143.543, 38.5373, 137.886, 39.9515, 125.158, -12.3744, 127.279, -22.2739, 128.693)
+10:8/0/physics_layer_0/polygon_1/points = PackedVector2Array(-78.8424, 19.799, 86.6206, 16.9706, 84.4993, 1.41421, -61.8718, 1.41421)
+12:14/size_in_atlas = Vector2i(5, 4)
+12:14/0 = 0
+11:21/size_in_atlas = Vector2i(7, 10)
+11:21/0 = 0
+11:21/0/y_sort_origin = 60
+11:21/0/physics_layer_0/polygon_0/points = PackedVector2Array(-46.25, 66.5, 43.2086, 66.8174, 45.25, 62, -42.25, 58.5)
+24:14/size_in_atlas = Vector2i(5, 4)
+24:14/0 = 0
+0:11/size_in_atlas = Vector2i(10, 21)
+0:11/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_skuha"]
+texture = ExtResource("11_pu4od")
+3:0/size_in_atlas = Vector2i(13, 10)
+3:0/0 = 0
+19:1/size_in_atlas = Vector2i(10, 9)
+19:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_hcqej"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_b5rfu")
+sources/1 = SubResource("TileSetAtlasSource_skuha")
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wlax6"]
 animations = [{
@@ -54,25 +122,172 @@ func _on_area_2d_body_exited(_body: Node2D) -> void:
 	$Label.visible = false
 "
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_shmg2"]
-radius = 60.208
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nn107"]
+size = Vector2(1793, 61)
+
+[sub_resource type="GDScript" id="GDScript_njf6x"]
+script/source = "extends Sprite2D
+
+var ready_to_space = false
+
+func _ready() -> void:
+	$CanvasLayer.visible = false
+	$Label.visible = false
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed(\"ui_accept\") and ready_to_space:
+		$CanvasLayer.visible = [true, false][int($CanvasLayer.visible)]
+		$CanvasLayer/Dialoge.count_texts = 0
+
+func _on_area_2d_body_entered(_body: Node2D) -> void:
+	ready_to_space = true
+	$Label.visible = true
+
+func _on_area_2d_body_exited(_body: Node2D) -> void:
+	$CanvasLayer/Dialoge.count_texts = 0
+	ready_to_space = false
+	$Label.visible = false
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k61kv"]
+radius = 125.036
+
+[sub_resource type="GDScript" id="GDScript_pysvg"]
+script/source = "extends Node2D
+
+var ready_to_space = false
+
+func _ready() -> void:
+	$CanvasLayer.visible = false
+	$Label.visible = false
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed(\"ui_accept\") and ready_to_space:
+		$CanvasLayer.visible = [true, false][int($CanvasLayer.visible)]
+		$CanvasLayer/Dialoge.count_texts = 0
+
+func _on_area_2d_body_entered(_body: Node2D) -> void:
+	ready_to_space = true
+	$Label.visible = true
+
+func _on_area_2d_body_exited(_body: Node2D) -> void:
+	$CanvasLayer/Dialoge.count_texts = 0
+	ready_to_space = false
+	$Label.visible = false
+"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tv8vx"]
+radius = 18.0
+height = 52.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_fmqcq"]
+texture = ExtResource("20_6rcnw")
+1:0/size_in_atlas = Vector2i(8, 10)
+1:0/0 = 0
+10:0/size_in_atlas = Vector2i(8, 10)
+10:0/0 = 0
+20:0/size_in_atlas = Vector2i(9, 10)
+20:0/0 = 0
+22:11/size_in_atlas = Vector2i(8, 10)
+22:11/0 = 0
+11:11/size_in_atlas = Vector2i(8, 10)
+11:11/0 = 0
+0:11/size_in_atlas = Vector2i(9, 10)
+0:11/0 = 0
+1:22/size_in_atlas = Vector2i(9, 10)
+1:22/0 = 0
+19:22/size_in_atlas = Vector2i(8, 10)
+19:22/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_x3vdg"]
+sources/0 = SubResource("TileSetAtlasSource_fmqcq")
 
 [node name="CircusLvl" type="Node2D"]
+position = Vector2(1, 17)
 
 [node name="ColorRect" type="Sprite2D" parent="."]
 modulate = Color(0.54, 0.324, 0.324, 1)
-position = Vector2(577, 328)
-scale = Vector2(19.0313, 11.25)
+position = Vector2(865.999, 328)
+scale = Vector2(28.0625, 11.25)
 texture = ExtResource("1_1f45b")
 
+[node name="ColorRect2" type="Sprite2D" parent="."]
+modulate = Color(1, 0.2, 0.2, 1)
+position = Vector2(510.5, 136)
+scale = Vector2(12.2656, 5.46875)
+texture = ExtResource("1_1f45b")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAHABMAAAAEAAIAAAAJABMAAAAEAAYAAAAMABMAAAAEAAYAAAAPABMAAAAEAAYAAAASABMAAAAEAAYAAAAVABMAAAAEAAYAAAAYABMAAAAEAAYAAAAbABMAAAAEAAYAAAAeABMAAAAEAAYAAAAhABMAAAAEAAYAAAAkABMAAAAEAAYAAAAnABMAAAAEAAYAAAAqABMAAAAEAAYAAAAtABMAAAAEAAYAAAAwABMAAAAEAAYAAAAzABMAAAAEAAYAAAA2ABMAAAAEAAYAAAA4ABMAAAAEAAIAABAHAAEAAAAAAAAAAAAHAAYAAAAAAAAAAAAHAAsAAAAAAAAAAAAHABAAAAAAAAAAAAA4AAEAAAAAAAAAABA4AAYAAAAAAAAAABA4AAsAAAAAAAAAABA4ABAAAAAAAAAAABAHAPz/AAAAAAAAAAA4APz/AAAAAAAAABA=")
+tile_set = SubResource("TileSet_jkphf")
+
 [node name="Objects" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="Player" parent="Objects" instance=ExtResource("1_tt0pq")]
-position = Vector2(578, 60.0001)
+position = Vector2(713, 553)
 loc = "circus"
 
+[node name="BigMen" parent="Objects" instance=ExtResource("11_k732b")]
+position = Vector2(1594, 217)
+
+[node name="Dialoge" parent="Objects/BigMen/CanvasLayer" index="0"]
+max_texts = 6
+object_name = "Толстяк"
+text1 = "..."
+object_name2 = "Толстяк"
+text2 = "..."
+object_name3 = "Толстяк"
+text3 = "А?"
+object_name4 = "Толстяк"
+text4 = "..."
+object_name5 = "Толстяк"
+text5 = "Фух... Ох.."
+text6 = "*Он слишком увлечен попытками достать пончик на животе, чтобы ответить*"
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Objects"]
+y_sort_enabled = true
+tile_map_data = PackedByteArray("AAANACMAAAAKAAgAAAAhACMAAAAKAAgAABA4ACMAAAAKAAgAAAAtAB8AAAAKAAgAAAAXAB8AAAAKAAgAAAAiABsAAAAKAAgAAAANABsAAAAKAAgAABA4ABsAAAAKAAgAABAtABYAAAAKAAgAABAXABYAAAAKAAgAAABFABcAAAAVAAEAAAAqAP//AAAMAA4AAAALABcAAAALAAEAAAA/AB8AAAALAAEAABAdAAEAAAAVAAEAAABUAAsAAAAVAAEAAABjACAAAAAVAAEAAABUAAQAAQADAAAAAABiABgAAQATAAEAAABMAB8AAAAVAAEAAABMAA8AAAAVAAEAABBjAAUAAAAVAAEAABBUABQAAAAVAAEAAAAQAAQAAAABAAAAAABIAAkAAAALAAEAAAA5ABAAAAAVAAEAAAA+AAgAAAAVAAEAABAKAAQAAAAVAAEAAAAEAB8AAAAVAAEAABBRABwAAAAbAAUAAABDABAAAAAbAAUAABBdAAUAAAAbAAUAAABmAAQAAAAbAAUAABBeACIAAAAbAAUAAABrABAAAAAYAA4AABArAA4AAAAVAAEAABAXAA0AAAAbAAUAABAWAAkAAAALAAEAAAATAA0AAAAbAAUAAAAOAAoAAAAVAAEAAAAWAAYAAAAVAAEAABALAA8AAAAVAAEAAAAmAP//AAAVAAEAAAAlAAoAAAAVAAEAABAiAAgAAAAbAAUAAAAeAAgAAAAbAAUAABAfAAQAAAALAAEAABAyAAgAAAAAAAsAAAAuAAcAAAAVAAEAAAA2AAQAAAAVAAEAABAoAAQAAAAVAAEAAAAUAP//AAAYAA4AAABiABMAAAALAAEAAAA=")
+tile_set = SubResource("TileSet_hcqej")
+
+[node name="MenWithBigUsy" parent="Objects" instance=ExtResource("7_mcv52")]
+position = Vector2(634, 234)
+
+[node name="CollisionShape2D" parent="Objects/MenWithBigUsy/Area2D" index="0"]
+position = Vector2(-7, 3)
+
+[node name="Dialoge" parent="Objects/MenWithBigUsy/CanvasLayer" index="0"]
+text1 = ""
+text2 = ""
+text3 = ""
+text4 = ""
+text5 = ""
+text6 = ""
+
+[node name="Person8" parent="Objects" instance=ExtResource("8_5toid")]
+position = Vector2(1224, 441)
+
+[node name="Dialoge" parent="Objects/Person8/CanvasLayer" index="0"]
+max_texts = 2
+object_name = "Прохожий"
+text1 = "В цирке новое представление. Привезли слона."
+object_name2 = "Прохожий"
+text2 = "Знать бы, что такое слон."
+
+[node name="Person1" parent="Objects" instance=ExtResource("9_gwvlh")]
+position = Vector2(171, 425)
+
+[node name="Dialoge" parent="Objects/Person1/CanvasLayer" index="0"]
+max_texts = 3
+object_name = "Прохожий"
+text1 = "Здесь столько животных, кто из них слон?"
+object_name2 = "Прохожий"
+text2 = "На сегодняшнем выступлении обещали слона, но пока я вижу только свиней."
+object_name3 = "Прохожий"
+text3 = "Очень. Много. Свиней."
+
 [node name="target" type="AnimatedSprite2D" parent="."]
-position = Vector2(577, 72)
+position = Vector2(717.534, 559.534)
 scale = Vector2(2.50672, 2.50672)
 sprite_frames = SubResource("SpriteFrames_wlax6")
 autoplay = "default"
@@ -83,7 +298,7 @@ texture = ExtResource("6_setim")
 texture_scale = 0.05
 
 [node name="Exit" type="Node2D" parent="."]
-position = Vector2(569, -331)
+position = Vector2(576, 301)
 script = SubResource("GDScript_i5f0p")
 
 [node name="Area2D" type="Area2D" parent="Exit"]
@@ -92,14 +307,64 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Exit/Area2D"]
-position = Vector2(33, 67)
-shape = SubResource("CircleShape2D_shmg2")
+position = Vector2(332.5, 58.5)
+shape = SubResource("RectangleShape2D_nn107")
 
 [node name="Label" type="Label" parent="Exit"]
-offset_left = 69.0
-offset_top = 336.0
-offset_right = 110.0
-offset_bottom = 356.0
+offset_left = -512.0
+offset_top = 254.0
+offset_right = -471.0
+offset_bottom = 274.0
+text = "Space"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Exit/Label"]
+layout_mode = 0
+offset_left = 304.0
+offset_top = 4.0
+offset_right = 345.0
+offset_bottom = 24.0
+text = "Space"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label3" type="Label" parent="Exit/Label"]
+layout_mode = 0
+offset_left = 631.0
+offset_top = 3.0
+offset_right = 672.0
+offset_bottom = 23.0
+text = "Space"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label4" type="Label" parent="Exit/Label"]
+layout_mode = 0
+offset_left = 969.0
+offset_top = -1.0
+offset_right = 1010.0
+offset_bottom = 19.0
+text = "Space"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label5" type="Label" parent="Exit/Label"]
+layout_mode = 0
+offset_left = 1288.0
+offset_top = -1.0
+offset_right = 1329.0
+offset_bottom = 19.0
+text = "Space"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label6" type="Label" parent="Exit/Label"]
+layout_mode = 0
+offset_left = 1624.0
+offset_top = -1.0
+offset_right = 1665.0
+offset_bottom = 19.0
 text = "Space"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -112,5 +377,144 @@ max_texts = 1
 object_name = "Выход"
 text1 = "Хорошего вечера!"
 
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_5kbik")
+volume_db = -7.457
+autoplay = true
+parameters/looping = true
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(384, 120)
+color = Color(1, 1, 0.396078, 1)
+texture = ExtResource("6_setim")
+texture_scale = 1.9
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+position = Vector2(763, 120)
+color = Color(1, 1, 0.396078, 1)
+texture = ExtResource("6_setim")
+texture_scale = 1.9
+
+[node name="PointLight2D3" type="PointLight2D" parent="."]
+position = Vector2(1600, 447)
+color = Color(1, 1, 0.396078, 1)
+texture = ExtResource("6_setim")
+texture_scale = 1.9
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+energy = 0.35
+blend_mode = 1
+
+[node name="Girlyand1V" parent="." instance=ExtResource("14_k4qh7")]
+position = Vector2(1325, 74)
+
+[node name="PointLight2D" parent="Girlyand1V" index="2"]
+color = Color(1, 0.847059, 0.509804, 1)
+energy = 0.6
+texture_scale = 1.35
+
+[node name="Table" type="Sprite2D" parent="."]
+position = Vector2(1517, 436)
+texture = ExtResource("16_v46c7")
+script = SubResource("GDScript_njf6x")
+
+[node name="Area2D" type="Area2D" parent="Table"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Table/Area2D"]
+shape = SubResource("CircleShape2D_k61kv")
+
+[node name="Label" type="Label" parent="Table"]
+offset_left = -22.0
+offset_top = -52.0
+offset_right = 19.0
+offset_bottom = -32.0
+text = "Space"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Table"]
+visible = false
+
+[node name="Dialoge" parent="Table/CanvasLayer" instance=ExtResource("8_mytt2")]
+max_texts = 4
+object_name = "Камень в клетке"
+text1 = "Обычный камень, который точно не несёт опасности, как и все остальные обычные камни."
+text2 = "*Вы изучаете табличку и замечаете нацарапанный на обратной стороне текст*"
+object_name3 = "Камень в клетке"
+text3 = "Идиоты, клетка меня не остановит."
+text4 = "*Вы решаете, что от камня лучше отойти*"
+
+[node name="Kassa" type="Node2D" parent="."]
+script = SubResource("GDScript_pysvg")
+
+[node name="Area2D" type="Area2D" parent="Kassa"]
+position = Vector2(1331, 125)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Kassa/Area2D"]
+position = Vector2(10, -19)
+shape = SubResource("CircleShape2D_k61kv")
+
+[node name="Label" type="Label" parent="Kassa"]
+offset_left = 1354.0
+offset_top = 138.0
+offset_right = 1395.0
+offset_bottom = 158.0
+text = "Space"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Kassa"]
+visible = false
+
+[node name="Dialoge" parent="Kassa/CanvasLayer" instance=ExtResource("8_mytt2")]
+max_texts = 10
+object_name = "Кот"
+text1 = "Вкусные хот-кэты! Подходите, мяу, налетайте!"
+object_name2 = "Клиент"
+text2 = "Хот-кэт? Может, хот-дог?"
+object_name3 = "Кот"
+text3 = "А ты видишь здесь собак, умник?"
+object_name4 = "Клиент"
+text4 = "..."
+object_name5 = "Клиент"
+text5 = "Стоп, из чего вы вообще делаете эти свои хот-кэты?"
+object_name6 = "Кот"
+text6 = "Пр-р-роваливай отсюда, не сбивай аппетит другим!"
+object_name7 = "Кот"
+text7 = "Эй, ты, похожий на призрака. Кушать хочешь?"
+text8 = "*Кот протягивает вам хот-кэт*"
+text9 = "*Вам кажется, будто эта сосиска тихо мурлычет*"
+text10 = "*Лучше это не пробовать*"
+
+[node name="Person1" type="StaticBody2D" parent="Kassa"]
+position = Vector2(1297, 141)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Kassa/Person1"]
+position = Vector2(0, 13)
+scale = Vector2(0.54497, 0.54497)
+shape = SubResource("CapsuleShape2D_tv8vx")
+
+[node name="Sprite2D" type="Sprite2D" parent="Kassa/Person1"]
+position = Vector2(6, -46)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Kassa/Person1"]
+scale = Vector2(0.594211, 0.594211)
+tile_map_data = PackedByteArray("AAAAAP7/AAABAAAAAAA=")
+tile_set = SubResource("TileSet_x3vdg")
+
 [connection signal="body_entered" from="Exit/Area2D" to="Exit" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Exit/Area2D" to="Exit" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="Table/Area2D" to="Table" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Table/Area2D" to="Table" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="Kassa/Area2D" to="Kassa" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Kassa/Area2D" to="Kassa" method="_on_area_2d_body_exited"]
+
+[editable path="Objects/BigMen"]
+[editable path="Objects/MenWithBigUsy"]
+[editable path="Objects/Person8"]
+[editable path="Objects/Person1"]
+[editable path="Girlyand1V"]

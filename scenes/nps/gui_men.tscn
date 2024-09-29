@@ -1,0 +1,240 @@
+[gd_scene load_steps=12 format=3 uid="uid://ce50bdokhpjgn"]
+
+[ext_resource type="Texture2D" uid="uid://bu2jbqs4x0wdn" path="res://Textures/NPC/Museum_guie.png" id="1_puglk"]
+[ext_resource type="PackedScene" uid="uid://tle4lijd0xvs" path="res://scenes/UI/dialoge.tscn" id="2_8fb6k"]
+[ext_resource type="Texture2D" uid="uid://cmaa26qdfnxdf" path="res://Textures/Object/Stone1.png" id="3_ldt6k"]
+[ext_resource type="Texture2D" uid="uid://c5wfltakiwhme" path="res://Textures/Paint2.png" id="4_w0463"]
+
+[sub_resource type="GDScript" id="GDScript_mj4i0"]
+script/source = "extends StaticBody2D
+
+var ready_to_space = false
+
+func _ready() -> void:
+	$CanvasLayer.visible = false
+	$Label.visible = false
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed(\"ui_accept\") and ready_to_space:
+		$CanvasLayer.visible = [true, false][int($CanvasLayer.visible)]
+		$CanvasLayer/Dialoge.count_texts = 0
+
+func _on_area_2d_body_entered(_body: Node2D) -> void:
+	ready_to_space = true
+	$Label.visible = true
+
+func _on_area_2d_body_exited(_body: Node2D) -> void:
+	$CanvasLayer/Dialoge.count_texts = 0
+	ready_to_space = false
+	$Label.visible = false
+"
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nvi7p"]
+radius = 7.0
+height = 20.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_njcud"]
+radius = 124.004
+
+[sub_resource type="GDScript" id="GDScript_c4fti"]
+script/source = "extends Control
+
+@onready var animation_player: AnimationPlayer = $Panel/AnimationPlayer
+var count_texts = 0
+@export var max_texts = 10
+
+@export var object_name = 'Смотритель музея'
+var text1 = 'Ого, новый посетитель!'
+var text2 = 'Рад тебя видеть, добро пожаловать!'
+var text3 = 'Проходи, осматривайся. У нас здесь много интересного, например...'
+var text4 = 'Э-э... Ну или...'
+var text5 = 'Эх, кого я обманываю... У нас нет ничего интересного...'
+var text6 = 'Людям уже приелись все мои экспонаты, они всё это видели.'
+var text7 = 'А добывать новые не так уж и легко, когда ты даже не можешь покинуть город.'
+var text8 = 'Я знаю о твоих проблемах, слухи по городу быстро расходятся.'
+var text9 = 'Если ты мне поможешь освежить мою выставку, я помогу тебе.'
+var text10 = 'Например... Э-э... Да, вот, смотри, вот этот камень очень тебе поможет.'
+var text11 = 'И я дам тебе его, если ты поможешь мне.'
+var text12 = 'Если не знаешь, с чего начать, попробуй сделать что-нибудь с картиной, вон она висит.'
+
+func _ready() -> void:
+	new_text()
+	$Panel/Label.text = object_name
+
+func _process(delta: float) -> void:
+	if Input.is_anything_pressed() and !animation_player.is_playing() and get_parent().visible:
+		new_text()
+		if count_texts == max_texts:
+			get_parent().visible = false
+			count_texts = 0
+			if Global.count_talk_museum == 0:
+				Global.count_talk_museum = 1
+			elif Global.count_talk_museum == 1:
+				Global.count_talk_museum = 2
+		
+		match count_texts:
+			0:
+				$Panel/RichTextLabel.text = text1
+				animation_player.play('a')
+			1:
+				$Panel/RichTextLabel.text = text2
+				animation_player.play('a')
+			2:
+				$Panel/RichTextLabel.text = text3
+				animation_player.play('a')
+			3:
+				$Panel/RichTextLabel.text = text4
+				animation_player.play('a')
+				if Global.count_talk_museum == 3:
+					Global.stones += 1
+			4:
+				$Panel/RichTextLabel.text = text5
+				animation_player.play('a')
+			5:
+				$Panel/RichTextLabel.text = text6
+				animation_player.play('a')
+			6:
+				$Panel/RichTextLabel.text = text7
+				animation_player.play('a')
+			7:
+				$Panel/RichTextLabel.text = text8
+				animation_player.play('a')
+			8:
+				$Panel/RichTextLabel.text = text9
+				animation_player.play('a')
+			9:
+				$Panel/RichTextLabel.text = text10
+				animation_player.play('a')
+				$\"../AnimationPlayer\".play(\"a\")
+				$\"../Sprite2D2\".visible = true
+			10:
+				$Panel/RichTextLabel.text = text11
+				animation_player.play('a')
+			11:
+				$Panel/RichTextLabel.text = text12
+				animation_player.play('a')
+				$\"../Sprite2D2\".visible = false
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	count_texts += 1
+
+func new_text():
+	match Global.count_talk_museum:
+		1:
+			max_texts = 12
+			text1 = 'Ого, новый посетитель!'
+			text2 = 'Рад тебя видеть, добро пожаловать!'
+			text3 = 'Проходи, осматривайся. У нас здесь много интересного, например...'
+			text4 = 'Э-э... Ну или...'
+			text5 = 'Эх, кого я обманываю... У нас нет ничего интересного...'
+			text6 = 'Людям уже приелись все мои экспонаты, они всё это видели.'
+			text7 = 'А добывать новые не так уж и легко, когда ты даже не можешь покинуть город.'
+			text8 = 'Я знаю о твоих проблемах, слухи по городу быстро расходятся.'
+			text9 = 'Если ты мне поможешь освежить мою выставку, я помогу тебе.'
+			text10 = 'Например... Э-э... Да, вот, смотри, вот этот камень очень тебе поможет.'
+			text11 = 'И я дам тебе его, если ты поможешь мне.'
+			text12 = 'Если не знаешь, с чего начать, попробуй сделать что-нибудь с картиной, вон она висит.'
+		2:
+			max_texts = 1
+			text1 = 'Если ты мне поможешь освежить мою выставку, я помогу тебе.'
+		3:
+			max_texts = 4
+			text1 = 'Посмотрите на это! Настоящее произведение искусства!'
+			text2 = 'Я чувствую каждую ноту из симфонии души автора!'
+			text3 = 'Она просто прекрасна, это точно привлечёт новых посетителей.'
+			text4 = 'Держи свой камень. И прощай, мне надо готовиться к новой выставке.'
+"
+
+[sub_resource type="Animation" id="Animation_gcigx"]
+resource_name = "a"
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D2:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(277, 232), Vector2(277, 144.925)]
+}
+
+[sub_resource type="Animation" id="Animation_fb062"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(277, 232)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_x1fn8"]
+_data = {
+"RESET": SubResource("Animation_fb062"),
+"a": SubResource("Animation_gcigx")
+}
+
+[node name="GuiMen" type="StaticBody2D"]
+script = SubResource("GDScript_mj4i0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_nvi7p")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(3, -22)
+texture = ExtResource("1_puglk")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-1, -11)
+shape = SubResource("CircleShape2D_njcud")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -55.0
+offset_top = 23.0
+offset_right = -14.0
+offset_bottom = 43.0
+text = "Space"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Dialoge" parent="CanvasLayer" instance=ExtResource("2_8fb6k")]
+script = SubResource("GDScript_c4fti")
+max_texts = 10
+object_name = "Смотритель музея"
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite2D2" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(277, 232)
+scale = Vector2(6, 6)
+texture = ExtResource("3_ldt6k")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer"]
+libraries = {
+"": SubResource("AnimationLibrary_x1fn8")
+}
+
+[node name="Paint2" type="Sprite2D" parent="."]
+position = Vector2(-72, -118)
+texture = ExtResource("4_w0463")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

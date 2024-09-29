@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://bnfqrj8mdnrdb"]
+
+[ext_resource type="PackedScene" uid="uid://bltitciucq725" path="res://scenes/nps/nps.tscn" id="1_l31j4"]
+[ext_resource type="Texture2D" uid="uid://bu2jbqs4x0wdn" path="res://Textures/NPC/Museum_guie.png" id="2_najc2"]
+[ext_resource type="Texture2D" uid="uid://c5wfltakiwhme" path="res://Textures/Paint2.png" id="3_eebqv"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b8sk6"]
+height = 20.0
+
+[node name="GuiGay" instance=ExtResource("1_l31j4")]
+
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(0, 1)
+shape = SubResource("CapsuleShape2D_b8sk6")
+
+[node name="Sprite2D" parent="." index="2"]
+position = Vector2(4, -22)
+texture = ExtResource("2_najc2")
+
+[node name="Paint2" type="Sprite2D" parent="." index="6"]
+position = Vector2(-72, -118)
+texture = ExtResource("3_eebqv")
