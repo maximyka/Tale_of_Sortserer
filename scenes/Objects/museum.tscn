@@ -21,6 +21,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func _on_area_2d_body_entered(_body: Node2D) -> void:
 	ready_to_space = true
 	$Label.visible = true
+
 func _on_area_2d_body_exited(_body: Node2D) -> void:
 	$CanvasLayer/Dialoge.count_texts = 0
 	ready_to_space = false
@@ -66,6 +67,9 @@ vertical_alignment = 1
 visible = false
 
 [node name="Dialoge" parent="CanvasLayer" index="0" instance=ExtResource("3_wbcb2")]
+max_texts = 1
+object_name = "Музей"
+text1 = "Добро пожаловать"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

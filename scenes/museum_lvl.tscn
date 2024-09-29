@@ -1,0 +1,475 @@
+[gd_scene load_steps=28 format=4 uid="uid://bwh5hhicvnmt4"]
+
+[ext_resource type="PackedScene" uid="uid://cmaejy2uejwa6" path="res://scenes/Objects/colomne.tscn" id="1_lw4ok"]
+[ext_resource type="Texture2D" uid="uid://b0t1jwbrp424f" path="res://Textures/1_1.png" id="1_r46ng"]
+[ext_resource type="PackedScene" uid="uid://bbinujha8jtly" path="res://scenes/Objects/conteiner_with_bones.tscn" id="2_5nvwu"]
+[ext_resource type="PackedScene" uid="uid://cpgolhxefscr8" path="res://scenes/Objects/Stone.tscn" id="3_dfuwp"]
+[ext_resource type="PackedScene" uid="uid://dbbrrsu5hgadc" path="res://scenes/Objects/artafsct_museum.tscn" id="4_mdtb5"]
+[ext_resource type="PackedScene" uid="uid://0brdn6o5jaxv" path="res://scenes/character_body_2d.tscn" id="5_jx5vk"]
+[ext_resource type="Texture2D" uid="uid://cj3avjp230g5f" path="res://Textures/tile/Museum.png" id="6_gerfm"]
+[ext_resource type="PackedScene" uid="uid://cwol4rps4xxa3" path="res://scenes/Objects/musor.tscn" id="7_olywy"]
+[ext_resource type="Texture2D" uid="uid://vtj0q2vbse7l" path="res://Textures/light.png" id="7_r8byh"]
+[ext_resource type="Texture2D" uid="uid://ycygqttlnfan" path="res://Textures/player/target1.png" id="8_tomsb"]
+[ext_resource type="Texture2D" uid="uid://dbworxmlowviw" path="res://Textures/player/target2.png" id="9_0x70k"]
+[ext_resource type="Texture2D" uid="uid://cukaamgr2nmh3" path="res://Textures/player/target3.png" id="10_wcryd"]
+[ext_resource type="Texture2D" uid="uid://c6xwvfedov8mk" path="res://Textures/player/target4.png" id="11_63ndb"]
+[ext_resource type="PackedScene" uid="uid://tle4lijd0xvs" path="res://scenes/UI/dialoge.tscn" id="14_3p2rj"]
+[ext_resource type="Texture2D" uid="uid://dku1o1rrjipga" path="res://Textures/Object/Kartina.png" id="15_3o0lx"]
+[ext_resource type="AudioStream" uid="uid://b2cymorfiarqb" path="res://Music/Bones of ancient creatures.mp3" id="16_4cv01"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_8ke0x"]
+a = Vector2(-32.182, 30.9029)
+b = Vector2(32.6499, 30.72)
+
+[sub_resource type="GDScript" id="GDScript_dl42d"]
+script/source = "extends StaticBody2D
+
+var ready_to_space = false
+
+func _ready() -> void:
+	$CanvasLayer.visible = false
+	$Label.visible = false
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed(\"ui_accept\") and ready_to_space:
+		$CanvasLayer.visible = [true, false][int($CanvasLayer.visible)]
+		$CanvasLayer/Dialoge.count_texts = 0
+
+func _on_area_2d_body_entered(_body: Node2D) -> void:
+	ready_to_space = true
+	$Label.visible = true
+
+func _on_area_2d_body_exited(_body: Node2D) -> void:
+	$CanvasLayer/Dialoge.count_texts = 0
+	ready_to_space = false
+	$Label.visible = false
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_miabi"]
+radius = 70.0071
+
+[sub_resource type="GDScript" id="GDScript_mfdph"]
+script/source = "extends StaticBody2D
+
+var ready_to_space = false
+
+func _ready() -> void:
+	$CanvasLayer.visible = false
+	$Label.visible = false
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed(\"ui_accept\") and ready_to_space:
+		$CanvasLayer.visible = [true, false][int($CanvasLayer.visible)]
+		$CanvasLayer/Dialoge.count_texts = 0
+
+func _on_area_2d_body_entered(_body: Node2D) -> void:
+	ready_to_space = true
+	$Label.visible = true
+
+func _on_area_2d_body_exited(_body: Node2D) -> void:
+	$CanvasLayer/Dialoge.count_texts = 0
+	ready_to_space = false
+	$Label.visible = false
+"
+
+[sub_resource type="GDScript" id="GDScript_8o2u1"]
+script/source = "extends StaticBody2D
+
+var ready_to_space = false
+
+func _ready() -> void:
+	$CanvasLayer.visible = false
+	$Label.visible = false
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed(\"ui_accept\") and ready_to_space:
+		$CanvasLayer.visible = [true, false][int($CanvasLayer.visible)]
+		$CanvasLayer/Dialoge.count_texts = 0
+
+func _on_area_2d_body_entered(_body: Node2D) -> void:
+	ready_to_space = true
+	$Label.visible = true
+
+func _on_area_2d_body_exited(_body: Node2D) -> void:
+	$CanvasLayer/Dialoge.count_texts = 0
+	ready_to_space = false
+	$Label.visible = false
+"
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0byi6"]
+texture = ExtResource("6_gerfm")
+1:0/size_in_atlas = Vector2i(7, 12)
+1:0/0 = 0
+1:0/0/y_sort_origin = -165
+9:4/size_in_atlas = Vector2i(16, 7)
+9:4/0 = 0
+9:4/0/y_sort_origin = -95
+27:0/size_in_atlas = Vector2i(3, 5)
+27:0/0 = 0
+27:0/0/y_sort_origin = 10
+27:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-21.75, 8, 8, 8, 11.75, 30.5, -24.75, 31)
+27:5/size_in_atlas = Vector2i(3, 5)
+27:5/0 = 0
+27:5/0/y_sort_origin = 10
+27:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-21.25, 3, 8, 3, 10.75, 26.5, -22.75, 27)
+19:11/size_in_atlas = Vector2i(8, 4)
+19:11/0 = 0
+19:11/0/physics_layer_0/polygon_0/points = PackedVector2Array(-47.25, -1, 46.75, -4, 60.75, 3.5, 58.25, 16.5, -58.75, 17, -58.25, 4.5)
+8:15/size_in_atlas = Vector2i(10, 3)
+8:15/0 = 0
+8:15/0/y_sort_origin = -15
+8:15/0/physics_layer_0/polygon_0/points = PackedVector2Array(-57.75, -16, 52.75, -15.5, 62.25, -11, -72.75, -11.5)
+14:11/size_in_atlas = Vector2i(3, 3)
+14:11/0 = 0
+8:11/size_in_atlas = Vector2i(5, 2)
+8:11/0 = 0
+2:14/size_in_atlas = Vector2i(4, 5)
+2:14/0 = 0
+2:14/0/y_sort_origin = 15
+2:14/0/physics_layer_0/polygon_0/points = PackedVector2Array(-13.625, 6.75, 15.875, 6, 27.625, 26.5, -20.625, 27.5)
+
+[sub_resource type="TileSet" id="TileSet_c0h6o"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_0byi6")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_585dh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_tomsb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_0x70k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_wcryd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_63ndb")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_udlap"]
+script/source = "extends Node2D
+
+var ready_to_space = false
+
+
+func _ready() -> void:
+	$museum.visible = false
+	$Label.visible = false
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed(\"ui_accept\") and ready_to_space:
+		$museum.visible = [true, false][int($museum.visible)]
+		$museum/Dialoge.count_texts = 0
+
+func _on_area_2d_body_entered(_body: Node2D) -> void:
+	ready_to_space = true
+	$Label.visible = true
+
+func _on_area_2d_body_exited(_body: Node2D) -> void:
+	$museum/Dialoge.count_texts = 0
+	ready_to_space = false
+	$Label.visible = false
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_700lk"]
+radius = 60.208
+
+[sub_resource type="GDScript" id="GDScript_p6ta3"]
+script/source = "extends Sprite2D
+
+var ready_to_space = false
+
+func _ready() -> void:
+	$CanvasLayer.visible = false
+	$Label.visible = false
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed(\"ui_accept\") and ready_to_space:
+		$CanvasLayer.visible = [true, false][int($CanvasLayer.visible)]
+		$CanvasLayer/Dialoge.count_texts = 0
+
+func _on_area_2d_body_entered(_body: Node2D) -> void:
+	ready_to_space = true
+	$Label.visible = true
+
+func _on_area_2d_body_exited(_body: Node2D) -> void:
+	$CanvasLayer/Dialoge.count_texts = 0
+	ready_to_space = false
+	$Label.visible = false
+"
+
+[node name="MuseumLvl" type="Node2D"]
+
+[node name="ColorRect" type="Sprite2D" parent="."]
+modulate = Color(0.21, 0.393667, 0.5, 1)
+position = Vector2(583.5, 318)
+scale = Vector2(19.2344, 10.9375)
+texture = ExtResource("1_r46ng")
+
+[node name="ColorRect2" type="Sprite2D" parent="."]
+position = Vector2(581, -322)
+scale = Vector2(19.2344, 10.9375)
+texture = ExtResource("1_r46ng")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="ColorRect2"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ColorRect2/StaticBody2D"]
+shape = SubResource("SegmentShape2D_8ke0x")
+
+[node name="Objects" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="NPS" type="Node2D" parent="Objects"]
+
+[node name="Colomne" parent="Objects" instance=ExtResource("1_lw4ok")]
+position = Vector2(862, 137)
+
+[node name="Colomne2" parent="Objects" instance=ExtResource("1_lw4ok")]
+position = Vector2(270, 134)
+
+[node name="Colomne7" parent="Objects" instance=ExtResource("1_lw4ok")]
+position = Vector2(565, 136)
+
+[node name="Colomne3" parent="Objects" instance=ExtResource("1_lw4ok")]
+position = Vector2(125, 524)
+
+[node name="Colomne4" parent="Objects" instance=ExtResource("1_lw4ok")]
+position = Vector2(424, 519)
+
+[node name="Colomne6" parent="Objects" instance=ExtResource("1_lw4ok")]
+position = Vector2(1001, 527)
+
+[node name="Colomne8" parent="Objects" instance=ExtResource("1_lw4ok")]
+position = Vector2(-27, -11)
+
+[node name="Colomne9" parent="Objects" instance=ExtResource("1_lw4ok")]
+position = Vector2(1174, -3)
+
+[node name="ConteinerWithBones" parent="Objects" instance=ExtResource("2_5nvwu")]
+top_level = true
+position = Vector2(562, 440)
+script = SubResource("GDScript_dl42d")
+
+[node name="Area2D" type="Area2D" parent="Objects/ConteinerWithBones"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/ConteinerWithBones/Area2D"]
+position = Vector2(0, -14)
+shape = SubResource("CircleShape2D_miabi")
+
+[node name="Label" type="Label" parent="Objects/ConteinerWithBones"]
+visible = false
+offset_left = -20.0
+offset_top = -81.0
+offset_right = 21.0
+offset_bottom = -61.0
+text = "Space"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Objects/ConteinerWithBones"]
+visible = false
+
+[node name="Dialoge" parent="Objects/ConteinerWithBones/CanvasLayer" instance=ExtResource("14_3p2rj")]
+max_texts = 1
+object_name = "Экспанат"
+text1 = "Привет1234"
+
+[node name="Stone" parent="Objects" instance=ExtResource("3_dfuwp")]
+top_level = true
+position = Vector2(273, 436)
+script = SubResource("GDScript_mfdph")
+
+[node name="Area2D" type="Area2D" parent="Objects/Stone"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Objects/Stone/Area2D"]
+position = Vector2(4, 10)
+shape = SubResource("CircleShape2D_miabi")
+
+[node name="Label" type="Label" parent="Objects/Stone"]
+visible = false
+offset_left = -18.0
+offset_top = -41.0
+offset_right = 23.0
+offset_bottom = -21.0
+text = "Space"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Objects/Stone"]
+visible = false
+
+[node name="Dialoge" parent="Objects/Stone/CanvasLayer" instance=ExtResource("14_3p2rj")]
+max_texts = 1
+object_name = "Экспанат"
+text1 = "Привет2"
+
+[node name="ArtafsctMuseum" parent="Objects" instance=ExtResource("4_mdtb5")]
+position = Vector2(1083, 330)
+script = SubResource("GDScript_8o2u1")
+
+[node name="Player" parent="Objects" instance=ExtResource("5_jx5vk")]
+position = Vector2(87, 315)
+loc = "museum"
+
+[node name="TileMapLayer" type="TileMapLayer" parent="Objects"]
+y_sort_enabled = true
+tile_map_data = PackedByteArray("AAAHABQAAAAJAAQAAAAVABQAAAAJAAQAAAAjABQAAAAJAAQAAAAxABQAAAAJAAQAAAA/ABQAAAAJAAQAAABNABQAAAAJAAQAAAARABsAAAABAAAAAAAjABsAAAABAAAAAAA2ABsAAAABAAAAAAAaAA0AAAABAAAAAAA+AA0AAAABAAAAAAAjAA0AAAATAAsAAAA1AA0AAAATAAsAAAAQAA0AAAATAAsAAAA8ABkAAAAOAAsAAAAcAA0AAAAOAAsAABAYAB0AAAAOAAsAAAAJABkAAAAOAAsAABAGAA0AAAAOAAsAAAAhAAIAAAAOAAsAAAA0AAYAAAAOAAsAAAAjAB0AAAAbAAUAAAA2AB0AAAAbAAAAAAARAB0AAAAbAAUAAAAsAA0AAAABAAAAAAAsACEAAAACAA4AAAASAAEAAAAOAAsAABA=")
+tile_set = SubResource("TileSet_c0h6o")
+
+[node name="TileMapLayer2" type="TileMapLayer" parent="Objects"]
+y_sort_enabled = true
+tile_map_data = PackedByteArray("AAAaAAoAAAAbAAAAAAAsAAoAAAAbAAAAAAA+AAoAAAAbAAAAAAA=")
+tile_set = SubResource("TileSet_c0h6o")
+
+[node name="Musor" parent="Objects" instance=ExtResource("7_olywy")]
+position = Vector2(183, 213)
+
+[node name="lighr" type="Node2D" parent="."]
+
+[node name="PointLight2D" type="PointLight2D" parent="lighr"]
+position = Vector2(98, 219)
+color = Color(1, 0.913725, 0.345098, 1)
+energy = 0.55
+texture = ExtResource("7_r8byh")
+
+[node name="PointLight2D2" type="PointLight2D" parent="lighr"]
+position = Vector2(156, 412)
+color = Color(1, 0.913725, 0.345098, 1)
+energy = 0.55
+texture = ExtResource("7_r8byh")
+
+[node name="PointLight2D3" type="PointLight2D" parent="lighr"]
+position = Vector2(306, 22)
+color = Color(1, 0.913725, 0.345098, 1)
+energy = 0.55
+texture = ExtResource("7_r8byh")
+
+[node name="PointLight2D4" type="PointLight2D" parent="lighr"]
+position = Vector2(526, 40)
+color = Color(1, 0.913725, 0.345098, 1)
+energy = 0.55
+texture = ExtResource("7_r8byh")
+
+[node name="PointLight2D5" type="PointLight2D" parent="lighr"]
+position = Vector2(468, 216)
+color = Color(1, 0.913725, 0.345098, 1)
+energy = 0.55
+texture = ExtResource("7_r8byh")
+
+[node name="PointLight2D6" type="PointLight2D" parent="lighr"]
+position = Vector2(384, 470)
+color = Color(1, 0.913725, 0.345098, 1)
+energy = 0.55
+texture = ExtResource("7_r8byh")
+
+[node name="PointLight2D7" type="PointLight2D" parent="lighr"]
+position = Vector2(964, 409)
+color = Color(1, 0.913725, 0.345098, 1)
+energy = 0.55
+texture = ExtResource("7_r8byh")
+
+[node name="PointLight2D8" type="PointLight2D" parent="lighr"]
+position = Vector2(833, 104)
+color = Color(1, 0.913725, 0.345098, 1)
+energy = 0.55
+texture = ExtResource("7_r8byh")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="lighr"]
+energy = 0.4
+blend_mode = 1
+
+[node name="target" type="AnimatedSprite2D" parent="."]
+position = Vector2(70, 329)
+scale = Vector2(2.50672, 2.50672)
+sprite_frames = SubResource("SpriteFrames_585dh")
+autoplay = "default"
+
+[node name="PointLight2D" type="PointLight2D" parent="target"]
+energy = 0.07
+texture = ExtResource("7_r8byh")
+texture_scale = 0.05
+
+[node name="Exit" type="Node2D" parent="."]
+script = SubResource("GDScript_udlap")
+
+[node name="Area2D" type="Area2D" parent="Exit"]
+position = Vector2(-28, 263)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit/Area2D"]
+position = Vector2(33, 67)
+shape = SubResource("CircleShape2D_700lk")
+
+[node name="Label" type="Label" parent="Exit"]
+visible = false
+offset_left = 11.0
+offset_top = 244.0
+offset_right = 52.0
+offset_bottom = 264.0
+text = "Space"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="museum" type="CanvasLayer" parent="Exit"]
+visible = false
+
+[node name="Dialoge" parent="Exit/museum" instance=ExtResource("14_3p2rj")]
+max_texts = 1
+object_name = "Выход"
+text1 = "Хорошего вечера!"
+
+[node name="Kartina" type="Sprite2D" parent="."]
+position = Vector2(421, -57)
+texture = ExtResource("15_3o0lx")
+script = SubResource("GDScript_p6ta3")
+
+[node name="Area2D" type="Area2D" parent="Kartina"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Kartina/Area2D"]
+position = Vector2(3, 99)
+shape = SubResource("CircleShape2D_miabi")
+
+[node name="Label" type="Label" parent="Kartina"]
+visible = false
+offset_left = -71.0
+offset_top = 89.0
+offset_right = -30.0
+offset_bottom = 109.0
+text = "Space"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="Kartina"]
+visible = false
+
+[node name="Dialoge" parent="Kartina/CanvasLayer" instance=ExtResource("14_3p2rj")]
+max_texts = 1
+object_name = "Картина"
+text1 = "Да"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_4cv01")
+volume_db = -12.18
+autoplay = true
+
+[connection signal="body_entered" from="Objects/ConteinerWithBones/Area2D" to="Objects/ConteinerWithBones" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Objects/ConteinerWithBones/Area2D" to="Objects/ConteinerWithBones" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="Objects/Stone/Area2D" to="Objects/Stone" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Objects/Stone/Area2D" to="Objects/Stone" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="Exit/Area2D" to="Exit" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Exit/Area2D" to="Exit" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="Kartina/Area2D" to="Kartina" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Kartina/Area2D" to="Kartina" method="_on_area_2d_body_exited"]

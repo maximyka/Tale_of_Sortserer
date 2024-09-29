@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://dbbrrsu5hgadc"]
+[gd_scene load_steps=6 format=3 uid="uid://dbbrrsu5hgadc"]
 
 [ext_resource type="PackedScene" uid="uid://cbbovkx5qmev0" path="res://scenes/Objects/object.tscn" id="1_5eqv5"]
 [ext_resource type="Texture2D" uid="uid://gkbobtgvw0rr" path="res://Textures/Object/Artafsct_museum.png" id="2_7co8t"]
+[ext_resource type="PackedScene" uid="uid://tle4lijd0xvs" path="res://scenes/UI/dialoge.tscn" id="3_v0b36"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ghkea"]
 size = Vector2(43, 10)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_x012f"]
+radius = 70.0071
 
 [node name="ArtafsctMuseum" instance=ExtResource("1_5eqv5")]
 
@@ -15,3 +19,32 @@ shape = SubResource("RectangleShape2D_ghkea")
 [node name="Sprite2D" parent="." index="1"]
 position = Vector2(1, -17)
 texture = ExtResource("2_7co8t")
+
+[node name="Area2D" type="Area2D" parent="." index="2"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(0, -14)
+shape = SubResource("CircleShape2D_x012f")
+
+[node name="Label" type="Label" parent="." index="3"]
+visible = false
+offset_left = -20.0
+offset_top = -81.0
+offset_right = 21.0
+offset_bottom = -61.0
+text = "Space"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="4"]
+visible = false
+
+[node name="Dialoge" parent="CanvasLayer" index="0" instance=ExtResource("3_v0b36")]
+max_texts = 1
+object_name = "Экспанат"
+text1 = "Привет"
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

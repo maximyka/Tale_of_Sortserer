@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://dcv3nddetog4h"]
 
 [ext_resource type="PackedScene" uid="uid://cbbovkx5qmev0" path="res://scenes/Objects/object.tscn" id="1_du4sm"]
-[ext_resource type="Texture2D" uid="uid://dfpc3oe5muaty" path="res://Textures/Object/LampV1.png" id="2_wyc6t"]
+[ext_resource type="Texture2D" uid="uid://dhvnh3j40r66l" path="res://Textures/Object/LampV1.png" id="2_wyc6t"]
 [ext_resource type="Texture2D" uid="uid://vtj0q2vbse7l" path="res://Textures/light.png" id="3_7ejxc"]
 
 [node name="Lamp" instance=ExtResource("1_du4sm")]
@@ -17,6 +17,7 @@ texture = ExtResource("2_wyc6t")
 [node name="PointLight2D" type="PointLight2D" parent="." index="2"]
 position = Vector2(0, -41)
 color = Color(1, 0.87451, 0.4, 1)
+energy = 0.8
 shadow_enabled = true
 texture = ExtResource("3_7ejxc")
-texture_scale = 1.5
+texture_scale = 1.3

@@ -48,6 +48,7 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(-1, 16)
 shape = SubResource("CircleShape2D_hhvn8")
 
 [node name="Label" type="Label" parent="." index="3"]
@@ -64,6 +65,9 @@ vertical_alignment = 1
 visible = false
 
 [node name="Dialoge" parent="CanvasLayer" index="0" instance=ExtResource("3_6myb0")]
+max_texts = 1
+object_name = "Фонтан"
+text1 = "Красивый"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

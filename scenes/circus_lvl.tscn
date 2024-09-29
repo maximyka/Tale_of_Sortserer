@@ -1,0 +1,116 @@
+[gd_scene load_steps=12 format=3 uid="uid://bktcjidj2rxpr"]
+
+[ext_resource type="Texture2D" uid="uid://b0t1jwbrp424f" path="res://Textures/1_1.png" id="1_1f45b"]
+[ext_resource type="PackedScene" uid="uid://0brdn6o5jaxv" path="res://scenes/character_body_2d.tscn" id="1_tt0pq"]
+[ext_resource type="Texture2D" uid="uid://ycygqttlnfan" path="res://Textures/player/target1.png" id="2_5os3y"]
+[ext_resource type="Texture2D" uid="uid://dbworxmlowviw" path="res://Textures/player/target2.png" id="3_0puye"]
+[ext_resource type="Texture2D" uid="uid://cukaamgr2nmh3" path="res://Textures/player/target3.png" id="4_0jfmt"]
+[ext_resource type="Texture2D" uid="uid://c6xwvfedov8mk" path="res://Textures/player/target4.png" id="5_i3e3k"]
+[ext_resource type="Texture2D" uid="uid://vtj0q2vbse7l" path="res://Textures/light.png" id="6_setim"]
+[ext_resource type="PackedScene" uid="uid://tle4lijd0xvs" path="res://scenes/UI/dialoge.tscn" id="8_mytt2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wlax6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_5os3y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_0puye")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_0jfmt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_i3e3k")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_i5f0p"]
+script/source = "extends Node2D
+
+var ready_to_space = false
+
+
+func _ready() -> void:
+	$circus.visible = false
+	$Label.visible = false
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed(\"ui_accept\") and ready_to_space:
+		$circus.visible = [true, false][int($circus.visible)]
+		$circus/Dialoge.count_texts = 0
+
+func _on_area_2d_body_entered(_body: Node2D) -> void:
+	ready_to_space = true
+	$Label.visible = true
+
+func _on_area_2d_body_exited(_body: Node2D) -> void:
+	$circus/Dialoge.count_texts = 0
+	ready_to_space = false
+	$Label.visible = false
+"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_shmg2"]
+radius = 60.208
+
+[node name="CircusLvl" type="Node2D"]
+
+[node name="ColorRect" type="Sprite2D" parent="."]
+modulate = Color(0.54, 0.324, 0.324, 1)
+position = Vector2(577, 328)
+scale = Vector2(19.0313, 11.25)
+texture = ExtResource("1_1f45b")
+
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="Player" parent="Objects" instance=ExtResource("1_tt0pq")]
+position = Vector2(578, 60.0001)
+loc = "circus"
+
+[node name="target" type="AnimatedSprite2D" parent="."]
+position = Vector2(577, 72)
+scale = Vector2(2.50672, 2.50672)
+sprite_frames = SubResource("SpriteFrames_wlax6")
+autoplay = "default"
+
+[node name="PointLight2D" type="PointLight2D" parent="target"]
+energy = 0.07
+texture = ExtResource("6_setim")
+texture_scale = 0.05
+
+[node name="Exit" type="Node2D" parent="."]
+position = Vector2(569, -331)
+script = SubResource("GDScript_i5f0p")
+
+[node name="Area2D" type="Area2D" parent="Exit"]
+position = Vector2(-28, 263)
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit/Area2D"]
+position = Vector2(33, 67)
+shape = SubResource("CircleShape2D_shmg2")
+
+[node name="Label" type="Label" parent="Exit"]
+offset_left = 69.0
+offset_top = 336.0
+offset_right = 110.0
+offset_bottom = 356.0
+text = "Space"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="circus" type="CanvasLayer" parent="Exit"]
+visible = false
+
+[node name="Dialoge" parent="Exit/circus" instance=ExtResource("8_mytt2")]
+max_texts = 1
+object_name = "Выход"
+text1 = "Хорошего вечера!"
+
+[connection signal="body_entered" from="Exit/Area2D" to="Exit" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Exit/Area2D" to="Exit" method="_on_area_2d_body_exited"]

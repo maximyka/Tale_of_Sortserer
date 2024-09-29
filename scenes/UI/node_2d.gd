@@ -13,7 +13,7 @@ func Start_button() -> void:
 	tween.parallel().tween_property(GlobalWorldEnvironment, 'environment:adjustment_brightness', 0, 1)
 	tween.parallel().tween_property($AudioStreamPlayer, 'volume_db', -40, 0.5)
 	await tween.finished
-	var mainscene = load("res://scenes/test.tscn")
+	var mainscene = load("res://scenes/start_level_first.tscn")
 	get_tree().change_scene_to_packed(mainscene)
 
 

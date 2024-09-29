@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://1esbn3mbqvp3"]
+[gd_scene load_steps=14 format=3 uid="uid://1esbn3mbqvp3"]
 
 [ext_resource type="Script" path="res://scenes/UI/cut_scene.gd" id="1_mlfy8"]
 [ext_resource type="Texture2D" uid="uid://dhxemp5lvkswr" path="res://Textures/CG/2.png" id="1_twlri"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bb4d5qwjlwslc" path="res://Textures/CG/lol.png" id="8_80efw"]
 [ext_resource type="Texture2D" uid="uid://dv6leovyiwi5j" path="res://Textures/CG/micro.png" id="9_1n47o"]
 [ext_resource type="Texture2D" uid="uid://c2low112yebp6" path="res://Textures/CG/sogl.png" id="10_75tdy"]
+[ext_resource type="AudioStream" uid="uid://ceeihykt1y3em" path="res://Music/sad sortser.mp3" id="12_l3ain"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_v718c"]
 animations = [{
@@ -69,5 +70,10 @@ offset_right = 1371.0
 offset_bottom = 650.0
 theme_override_font_sizes/font_size = 26
 text = "Нажмите 'Пробел', чтобы продолжить"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_l3ain")
+volume_db = -9.369
+autoplay = true
 
 [connection signal="frame_changed" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_frame_changed"]

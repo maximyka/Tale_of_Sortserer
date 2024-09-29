@@ -1,10 +1,13 @@
 extends CharacterBody2D
 @export var speed = 400
-var speeding = 0
 
-var target = position
+var speeding = 0
+var target
 var target_node
 
+@export var loc = 'city'
+
+@onready var camera: Camera2D = $Camera2D
 @onready var player_anim: AnimatedSprite2D = $Player
 
 var combo = '':
@@ -22,8 +25,34 @@ var combo = '':
 			combo = ''
 
 func _ready() -> void:
+	match loc:
+		'city':
+			camera.zoom = Vector2(1.72, 1.72)
+			camera.limit_bottom = 650
+			camera.limit_right = 1350
+			camera.limit_left = -1350
+			camera.limit_top = -650
+		'circus':
+			camera.zoom = Vector2(2.2, 2.2)
+			camera.limit_bottom = 650
+			camera.limit_right = 1150
+			camera.limit_left = 0
+			camera.limit_top = 0
+		'museum':
+			camera.zoom = Vector2(2.2, 2.2)
+			camera.limit_bottom = 650
+			camera.limit_right = 1150
+			camera.limit_left = 0
+			camera.limit_top = -150
+		'start':
+			camera.zoom = Vector2(2.2, 2.2)
+			camera.limit_bottom = 500
+			camera.limit_right = 950
+			camera.limit_left = 250
+			camera.limit_top = 0
 	$UI/AnimatedSprite2D.visible = false
 	target_node = $"../../target"
+	target = target_node.position
 	var tween = get_tree().create_tween()
 	tween.tween_property(GlobalWorldEnvironment, 'environment:adjustment_brightness', 1, 1)
 	await tween.finished

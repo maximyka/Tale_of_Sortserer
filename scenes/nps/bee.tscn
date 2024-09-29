@@ -9,17 +9,18 @@ height = 26.0
 [node name="Bee" instance=ExtResource("1_1t662")]
 
 [node name="CollisionShape2D" parent="." index="0"]
-position = Vector2(0, -2)
+position = Vector2(1, 11)
 shape = SubResource("CapsuleShape2D_iexrj")
 
 [node name="Sprite2D" parent="." index="2"]
-position = Vector2(5, -22)
+position = Vector2(6, -9)
 texture = ExtResource("2_4mh4x")
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
 position = Vector2(0, -14)
 
 [node name="Label" parent="." index="4"]
+visible = false
 offset_left = -19.0
 offset_top = -89.0
 offset_right = 22.0

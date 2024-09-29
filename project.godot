@@ -19,9 +19,11 @@ boot_splash/show_image=false
 
 GlobalWorldEnvironment="*res://res/world_environment.tscn"
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
+Global="*res://Global.gd"
 
 [display]
 
+window/size/mode=3
 window/stretch/mode="canvas_items"
 
 [dotnet]

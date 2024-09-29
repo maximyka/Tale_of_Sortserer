@@ -8,17 +8,18 @@
 [node name="CoolMen" instance=ExtResource("1_fihw5")]
 
 [node name="CollisionShape2D" parent="." index="0"]
-position = Vector2(0, -14)
+position = Vector2(1, 14)
 shape = SubResource("CapsuleShape2D_15435")
 
 [node name="Sprite2D" parent="." index="2"]
-position = Vector2(218, -32)
+position = Vector2(219, -4)
 texture = ExtResource("2_kvc0i")
 
 [node name="CollisionShape2D" parent="Area2D" index="0"]
 position = Vector2(0, -24)
 
 [node name="Label" parent="." index="4"]
+visible = false
 offset_left = -21.0
 offset_top = -98.0
 offset_bottom = -78.0

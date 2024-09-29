@@ -1,0 +1,106 @@
+[gd_scene load_steps=14 format=3 uid="uid://s2hddc3v6vbt"]
+
+[ext_resource type="Texture2D" uid="uid://brwmn680vpxef" path="res://Player/Player_Idle12.png" id="1_sukp3"]
+[ext_resource type="Script" path="res://scenes/UI/loading.gd" id="1_wiicv"]
+[ext_resource type="Texture2D" uid="uid://bhqqxl0sywr8u" path="res://Player/Player_Idle13.png" id="2_kdvhn"]
+[ext_resource type="Texture2D" uid="uid://bxtbonf2bgxat" path="res://Player/Player_Idle14.png" id="3_skmah"]
+[ext_resource type="Texture2D" uid="uid://bqp3udnj7e5g7" path="res://Player/Player_Idle15.png" id="4_51ebd"]
+[ext_resource type="Texture2D" uid="uid://5yq6b0jpb5kh" path="res://Player/Player_Idle16.png" id="5_lbf4g"]
+[ext_resource type="Texture2D" uid="uid://cnytjt840gkoj" path="res://Player/Player_Idle17.png" id="6_5qpat"]
+[ext_resource type="Texture2D" uid="uid://cj78ma1q3eegq" path="res://Player/Player_Idle18.png" id="7_i0h3l"]
+[ext_resource type="Texture2D" uid="uid://dc0onrcodk6jl" path="res://Player/Player_Idle19.png" id="8_865v2"]
+[ext_resource type="Texture2D" uid="uid://xd6tvanpm5np" path="res://Player/Player_Idle20.png" id="9_aci52"]
+[ext_resource type="Texture2D" uid="uid://6opb0y20s5wm" path="res://Player/Player_Idle21.png" id="10_eidjx"]
+[ext_resource type="Texture2D" uid="uid://dy5nfgmhh757t" path="res://Player/Player_Idle22.png" id="11_am4ky"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3u77q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_sukp3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_kdvhn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_skmah")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_51ebd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_lbf4g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_5qpat")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_i0h3l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_865v2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_aci52")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_eidjx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_am4ky")
+}],
+"loop": true,
+"name": &"a",
+"speed": 40.0
+}]
+
+[node name="Loading" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wiicv")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Control"]
+scale = Vector2(2.4, 2.4)
+sprite_frames = SubResource("SpriteFrames_3u77q")
+animation = &"a"
+autoplay = "a"
+frame_progress = 0.992098
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -148.0
+offset_top = -176.0
+offset_right = 149.0
+offset_bottom = -105.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 56
+text = "ЗАГРУЗКА..."

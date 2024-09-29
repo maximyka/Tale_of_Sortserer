@@ -1,10 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmnjwl1o6ege7"]
+[gd_scene load_steps=7 format=3 uid="uid://bmnjwl1o6ege7"]
 
 [ext_resource type="PackedScene" uid="uid://cbbovkx5qmev0" path="res://scenes/Objects/object.tscn" id="1_uwmor"]
 [ext_resource type="Texture2D" uid="uid://cr0sd5tqr05im" path="res://Textures/Object/House3.png" id="2_y7v64"]
+[ext_resource type="Texture2D" uid="uid://vtj0q2vbse7l" path="res://Textures/light.png" id="3_x7832"]
+[ext_resource type="PackedScene" uid="uid://tle4lijd0xvs" path="res://scenes/UI/dialoge.tscn" id="4_3wu41"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2a2lh"]
 size = Vector2(232, 67)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2vldk"]
+radius = 60.208
 
 [node name="House3V" instance=ExtResource("1_uwmor")]
 
@@ -15,3 +20,53 @@ shape = SubResource("RectangleShape2D_2a2lh")
 [node name="Sprite2D" parent="." index="1"]
 position = Vector2(0, -83)
 texture = ExtResource("2_y7v64")
+
+[node name="PointLight2D" type="PointLight2D" parent="." index="2"]
+position = Vector2(72, -16)
+color = Color(1, 1, 0.368627, 1)
+energy = 0.5
+texture = ExtResource("3_x7832")
+texture_scale = 0.3
+
+[node name="PointLight2D2" type="PointLight2D" parent="." index="3"]
+position = Vector2(-45, -95)
+color = Color(1, 1, 0.368627, 1)
+energy = 0.5
+texture = ExtResource("3_x7832")
+texture_scale = 0.3
+
+[node name="PointLight2D3" type="PointLight2D" parent="." index="4"]
+position = Vector2(53, -181)
+color = Color(1, 1, 0.368627, 1)
+energy = 0.5
+texture = ExtResource("3_x7832")
+texture_scale = 0.3
+
+[node name="Area2D" type="Area2D" parent="." index="5"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2(-17, 91)
+shape = SubResource("CircleShape2D_2vldk")
+
+[node name="Label" type="Label" parent="." index="6"]
+visible = false
+offset_left = -29.0
+offset_top = -30.0
+offset_right = 12.0
+offset_bottom = -10.0
+text = "Space"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="7"]
+visible = false
+
+[node name="Dialoge" parent="CanvasLayer" index="0" instance=ExtResource("4_3wu41")]
+max_texts = 1
+object_name = "Музей"
+text1 = "Добро пожаловать"
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
