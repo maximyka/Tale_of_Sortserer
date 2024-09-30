@@ -9,7 +9,7 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_accept") and ready_to_space:
 		$CanvasLayer.visible = [true, false][int($CanvasLayer.visible)]
-		$"../Clown/CanvasLayer/Dialoge".count_texts = 0
+		$CanvasLayer/Dialoge.count_texts = 0
 
 func _on_area_2d_body_entered(_body: Node2D) -> void:
 	ready_to_space = true

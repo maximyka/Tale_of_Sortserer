@@ -1,6 +1,9 @@
 extends Node2D
 
 func _ready() -> void:
+	GlobalWorldEnvironment.environment.adjustment_saturation = 1
+	AudioServer.set_bus_effect_enabled(0, 0, false)
+	AudioServer.set_bus_effect_enabled(0, 1, false)
 	$Label.visible = Global.win
 	GlobalWorldEnvironment.environment.adjustment_brightness = 0
 	$AudioStreamPlayer.volume_db = -40
@@ -23,7 +26,6 @@ func _on_quit_pressed() -> void:
 	tween.parallel().tween_property(GlobalWorldEnvironment, 'environment:adjustment_brightness', 0, 1)
 	tween.parallel().tween_property($AudioStreamPlayer, 'volume_db', -40, 0.5)
 	await tween.finished
-	Global.save_game()
 	get_tree().quit()
 
 

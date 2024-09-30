@@ -46,17 +46,17 @@ var combo = '':
 				tween.parallel().tween_property($PointLight2D, 'energy', 0.4, 0.2)
 				$Lighting.start(10)
 			elif combo == 'erre': #Мелодия
-				var effect = AudioEffectPitchShift.new()
-				effect.pitch_scale = 0.5
-				var effect2 = AudioEffectReverb.new()
-				AudioServer.add_bus_effect(0, effect)
-				AudioServer.add_bus_effect(0, effect2)
+				AudioServer.set_bus_effect_enabled(0, 0, true)
+				AudioServer.set_bus_effect_enabled(0, 1, true)
 				$Music.start(5)
 			else:
 				print('Неверно')
 			combo = ''
 
 func _ready() -> void:
+	GlobalWorldEnvironment.environment.adjustment_saturation = 1
+	AudioServer.set_bus_effect_enabled(0, 0, false)
+	AudioServer.set_bus_effect_enabled(0, 1, false)
 	match loc:
 		'city':
 			camera.zoom = Vector2(1.72, 1.72)
@@ -147,8 +147,8 @@ func _on_color_timeout() -> void:
 
 
 func _on_music_timeout() -> void:
-	AudioServer.remove_bus_effect(0, 0)
-	AudioServer.remove_bus_effect(0, 1)
+	AudioServer.set_bus_effect_enabled(0, 0, false)
+	AudioServer.set_bus_effect_enabled(0, 1, false)
 
 
 func _on_exit_pressed() -> void:

@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://bktcjidj2rxpr"]
+[gd_scene load_steps=35 format=4 uid="uid://bktcjidj2rxpr"]
 
 [ext_resource type="Texture2D" uid="uid://b0t1jwbrp424f" path="res://Textures/1_1.png" id="1_1f45b"]
 [ext_resource type="PackedScene" uid="uid://0brdn6o5jaxv" path="res://scenes/character_body_2d.tscn" id="1_tt0pq"]
@@ -19,6 +19,16 @@
 [ext_resource type="PackedScene" uid="uid://drrbv83fakc63" path="res://scenes/Objects/girlyand_1v.tscn" id="14_k4qh7"]
 [ext_resource type="Texture2D" uid="uid://yarr82gj8ykh" path="res://Textures/Object/Table.png" id="16_v46c7"]
 [ext_resource type="Texture2D" uid="uid://cnc6rfqcl354c" path="res://Textures/tile/NPC_MaN.png" id="20_6rcnw"]
+
+[sub_resource type="GDScript" id="GDScript_k4ldf"]
+script/source = "extends Node2D
+
+
+func _ready() -> void:
+	GlobalWorldEnvironment.environment.adjustment_saturation = 1
+	AudioServer.set_bus_effect_enabled(0, 0, false)
+	AudioServer.set_bus_effect_enabled(0, 1, false)
+"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y3pqr"]
 texture = ExtResource("2_a023j")
@@ -204,6 +214,7 @@ sources/0 = SubResource("TileSetAtlasSource_fmqcq")
 
 [node name="CircusLvl" type="Node2D"]
 position = Vector2(1, 17)
+script = SubResource("GDScript_k4ldf")
 
 [node name="ColorRect" type="Sprite2D" parent="."]
 modulate = Color(0.54, 0.324, 0.324, 1)

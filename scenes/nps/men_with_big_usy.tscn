@@ -102,7 +102,7 @@ func _process(delta: float) -> void:
 				$Panel/RichTextLabel.text = text4
 				animation_player.play('a')
 				if Global.count_talk == 3:
-					Global.stones += 1
+					Global.stone1 = 1
 			4:
 				$Panel/RichTextLabel.text = text5
 				animation_player.play('a')

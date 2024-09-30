@@ -1,4 +1,18 @@
-[gd_resource type="AudioBusLayout" format=3 uid="uid://c3spkjk80qd2a"]
+[gd_resource type="AudioBusLayout" load_steps=3 format=3 uid="uid://c3spkjk80qd2a"]
+
+[sub_resource type="AudioEffectPitchShift" id="AudioEffectPitchShift_5qhlr"]
+resource_name = "PitchShift"
+pitch_scale = 0.76
+
+[sub_resource type="AudioEffectReverb" id="AudioEffectReverb_4vpde"]
+resource_name = "Reverb"
+damping = 0.35
+dry = 0.72
+wet = 0.3
 
 [resource]
 bus/0/volume_db = -0.130497
+bus/0/effect/0/effect = SubResource("AudioEffectPitchShift_5qhlr")
+bus/0/effect/0/enabled = true
+bus/0/effect/1/effect = SubResource("AudioEffectReverb_4vpde")
+bus/0/effect/1/enabled = true

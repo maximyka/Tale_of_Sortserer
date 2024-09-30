@@ -258,21 +258,6 @@ autoplay = "default"
 speed_scale = 0.4
 centered = false
 
-[node name="Label" type="Label" parent="."]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 414.0
-offset_top = 613.0
-offset_right = 1098.0
-offset_bottom = 663.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_font_sizes/font_size = 26
-text = "Нажмите, чтобы продолжить"
-
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_l3ain")
 volume_db = -9.369

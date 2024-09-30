@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://dx5h8ndase7yu"]
+[gd_scene load_steps=22 format=3 uid="uid://dx5h8ndase7yu"]
 
 [ext_resource type="Texture2D" uid="uid://b0t1jwbrp424f" path="res://Textures/1_1.png" id="1_gaa72"]
 [ext_resource type="PackedScene" uid="uid://0brdn6o5jaxv" path="res://scenes/character_body_2d.tscn" id="2_y432i"]
@@ -12,6 +12,16 @@
 [ext_resource type="Texture2D" uid="uid://vtj0q2vbse7l" path="res://Textures/light.png" id="8_k3gub"]
 [ext_resource type="Texture2D" uid="uid://dp4e6pgxxdv4g" path="res://Textures/kenney-particle-pack-7e801dc538996622a91327bb1dd5879cf977aa09/addons/kenney_particle_pack/magic_05.png" id="11_npe7t"]
 [ext_resource type="AudioStream" uid="uid://c8w1v1d38lou" path="res://Music/Place of lost souls.mp3" id="12_7wk2d"]
+
+[sub_resource type="GDScript" id="GDScript_gpxcn"]
+script/source = "extends Node2D
+
+
+func _ready() -> void:
+	GlobalWorldEnvironment.environment.adjustment_saturation = 1
+	AudioServer.set_bus_effect_enabled(0, 0, false)
+	AudioServer.set_bus_effect_enabled(0, 1, false)
+"
 
 [sub_resource type="GDScript" id="GDScript_cl55p"]
 script/source = "extends StaticBody2D
@@ -103,6 +113,7 @@ scale_max = 0.03
 alpha_curve = SubResource("CurveTexture_7poiw")
 
 [node name="StartLevelFirst" type="Node2D"]
+script = SubResource("GDScript_gpxcn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 self_modulate = Color(0, 0, 0, 1)

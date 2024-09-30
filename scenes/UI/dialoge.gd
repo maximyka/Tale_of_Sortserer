@@ -30,7 +30,7 @@ var ready_to_final = false
 func _ready() -> void:
 	$Panel/Label.text = object_name
 	if object_name == 'Двери':
-		if Global.stones == 2:
+		if Global.stone1 + Global.stone2 == 2:
 			ready_to_final = true
 			text1 = 'Вы готовы'
 		else:

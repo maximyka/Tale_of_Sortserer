@@ -86,7 +86,7 @@ func _process(delta: float) -> void:
 				$Panel/RichTextLabel.text = text4
 				animation_player.play('a')
 				if Global.count_talk_museum == 3:
-					Global.stones += 1
+					Global.stone2 = 1
 			4:
 				$Panel/RichTextLabel.text = text5
 				animation_player.play('a')
@@ -145,6 +145,21 @@ func new_text():
 			text4 = 'Держи свой камень. И прощай, мне надо готовиться к новой выставке.'
 "
 
+[sub_resource type="Animation" id="Animation_fb062"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(277, 232)]
+}
+
 [sub_resource type="Animation" id="Animation_gcigx"]
 resource_name = "a"
 loop_mode = 2
@@ -159,21 +174,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(277, 232), Vector2(277, 144.925)]
-}
-
-[sub_resource type="Animation" id="Animation_fb062"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D2:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(277, 232)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x1fn8"]

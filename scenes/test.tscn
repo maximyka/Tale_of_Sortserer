@@ -198,7 +198,7 @@ parameters/looping = true
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 color = Color(1, 1, 0.933333, 1)
-energy = 0.9
+energy = 0.93
 blend_mode = 1
 
 [node name="ColorRect" type="Sprite2D" parent="."]
@@ -545,6 +545,12 @@ position = Vector2(883, 232)
 [node name="House1V" parent="Objects" instance=ExtResource("17_ii8is")]
 position = Vector2(-803, -288)
 
+[node name="Label" parent="Objects/House1V" index="6"]
+offset_left = -39.0
+offset_top = -4.0
+offset_right = 2.0
+offset_bottom = 16.0
+
 [node name="Dialoge" parent="Objects/House1V/CanvasLayer" index="0"]
 text1 = "Тук-тук-тук."
 object_name2 = "Голос"
@@ -553,6 +559,12 @@ text2 = "Здесь нет ничего интересного!"
 [node name="House2V" parent="Objects" instance=ExtResource("18_2ufgc")]
 position = Vector2(-348, -444)
 
+[node name="Label" parent="Objects/House2V" index="6"]
+offset_left = -38.0
+offset_top = 6.0
+offset_right = 3.0
+offset_bottom = 26.0
+
 [node name="Dialoge" parent="Objects/House2V/CanvasLayer" index="0"]
 text1 = "Тук-тук-тук."
 object_name2 = "Голос"
@@ -560,6 +572,12 @@ text2 = "Дома никого нет!"
 
 [node name="House3V" parent="Objects" instance=ExtResource("19_wwxlr")]
 position = Vector2(-656, 60)
+
+[node name="Label" parent="Objects/House3V" index="6"]
+offset_left = -40.0
+offset_top = 46.0
+offset_right = 1.0
+offset_bottom = 66.0
 
 [node name="Dialoge" parent="Objects/House3V/CanvasLayer" index="0"]
 object_name = "Дом"
@@ -578,6 +596,12 @@ text2 = "Дом"
 [node name="House4V" parent="Objects" instance=ExtResource("20_42b3q")]
 position = Vector2(107, -384)
 
+[node name="Label" parent="Objects/House4V" index="6"]
+offset_left = -40.0
+offset_top = 14.0
+offset_right = 1.0
+offset_bottom = 34.0
+
 [node name="Dialoge" parent="Objects/House4V/CanvasLayer" index="0"]
 object_name = "Дом"
 text1 = "Тук-тук-тук."
@@ -585,6 +609,12 @@ text2 = "*Заперто*"
 
 [node name="House4V2" parent="Objects" instance=ExtResource("20_42b3q")]
 position = Vector2(-1073, -34)
+
+[node name="Label" parent="Objects/House4V2" index="6"]
+offset_left = -38.0
+offset_top = 14.0
+offset_right = 3.0
+offset_bottom = 34.0
 
 [node name="Dialoge" parent="Objects/House4V2/CanvasLayer" index="0"]
 max_texts = 9

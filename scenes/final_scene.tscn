@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bd0kb082fjaos"]
+[gd_scene load_steps=16 format=3 uid="uid://bd0kb082fjaos"]
 
 [ext_resource type="Texture2D" uid="uid://b0t1jwbrp424f" path="res://Textures/1_1.png" id="1_6cjrx"]
 [ext_resource type="PackedScene" uid="uid://0brdn6o5jaxv" path="res://scenes/character_body_2d.tscn" id="1_kw7aj"]
@@ -10,6 +10,16 @@
 [ext_resource type="Texture2D" uid="uid://cukaamgr2nmh3" path="res://Textures/player/target3.png" id="8_b8swj"]
 [ext_resource type="Texture2D" uid="uid://c6xwvfedov8mk" path="res://Textures/player/target4.png" id="9_wct2d"]
 [ext_resource type="Texture2D" uid="uid://vtj0q2vbse7l" path="res://Textures/light.png" id="10_oa8d8"]
+
+[sub_resource type="GDScript" id="GDScript_sis3y"]
+script/source = "extends Node2D
+
+
+func _ready() -> void:
+	GlobalWorldEnvironment.environment.adjustment_saturation = 1
+	AudioServer.set_bus_effect_enabled(0, 0, false)
+	AudioServer.set_bus_effect_enabled(0, 1, false)
+"
 
 [sub_resource type="Curve" id="Curve_s5k0w"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -47,6 +57,7 @@ animations = [{
 }]
 
 [node name="FinalScene" type="Node2D"]
+script = SubResource("GDScript_sis3y")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 self_modulate = Color(0, 0, 0, 1)
